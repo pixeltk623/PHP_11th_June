@@ -164,6 +164,10 @@
 			border: 1px solid #ccc;	
 			border-radius: 5px;
 		}
+		table tr th,td{ 
+			text-align: center;
+
+		}
 	</style>
 </head>
 <body>
@@ -275,20 +279,24 @@
 
 		?>
 
-		<table width="50%" frame="box" style="margin-top: 20px; width:70% ;padding: 10px ; padding-bottom:15px;">
+		<table border="1" width="50%" frame="box" style="margin-top: 20px; width:70% ;padding: 10px ; padding-bottom:15px;">
 		<tr>
 			<th colspan="2">Student Result</th>
 		</tr>
 		<tr>
+			<td>Name</td>
+			<td><?php echo (isset($Name)) ? $Name : '' ?></td>
+		</tr>
+		<tr>
 			<td>Average	</td>
-			<td><?php echo (isset($Average)) ? round($Average) : '' ?></td>
+			<td><?php echo (isset($Average)) ? round($Average) : '' ?>%</td>
 		</tr>
 		<tr>
 			<td>Total</td>
-			<td><?php echo (isset($Total)) ? round($Total) : '' ?></td>
+			<td><?php echo (isset($Total)) ? round($Total) : '' ?>/500</td>
 		</tr>
 		<tr>
-		<td style="padding-left: 40%;">
+		<td colspan="2" >
 			<?php
 			if (isset($Result)){
 				echo $Result;
