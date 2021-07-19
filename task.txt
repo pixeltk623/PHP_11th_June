@@ -1,0 +1,29 @@
+    Name of Student 
+    5 subject Marks 
+
+    1. PHY /100 / round() 45.7 = 46 // blank // number
+    2. Che 
+    3. Maths 
+    4. Hindi / Gujarati 
+    5. Sanskrit
+
+    500
+
+    //Avg = ?
+    Total Makrks Student 
+
+    Percentage = 52%
+
+    90> = E => green 
+
+    90<= 80> = O  = Blue 
+
+    80<= 70> = A  = Orange
+
+    70<= 60> = B = yellow
+
+    60<= 50> = C  = purple
+
+    50<= 40> =D = pink
+
+    40< = Fail Back To Home = red 
