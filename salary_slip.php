@@ -6,7 +6,6 @@ $designation =$_POST['designation'];
 $name=$_POST['name'];
 $time =$_POST['month'];
 
-
 //Conditions - Equations 
 if(isset($name)){
     
@@ -27,11 +26,16 @@ if(isset($salary)){
      $errorsalary ="cannot be blank";
    }
    else{
-       if(is_numeric($salary)){
-           $salary;
+       if(is_numeric($salary)){           
+           if($salary<=80000){
+             $errorsalary ="Please Do Not enter Less Amount";
+           }
+           else{
+               $salary;
+           }
        }
        else{
-        $errorsalary ="Enter Valid Salary Amount";
+        $errorsalary ="Enter In Number Format";
        }
    }
 }
@@ -40,85 +44,103 @@ if(isset($salary)){
 
 
 if($time =="blank"){
-    echo $errortime= '';
+     $errortime= '';
 }
-if($designation =="blank"){
-     $errordesignation =" ";
-}
+if(isset($designation)){
+    if($designation =="blank"){
+        $errordesignation =" ";
+   }else{
+    switch($designation){
 
-
-if (isset($errorname)){
-    $errorname;
-}
-else if (isset($errorsalary)){
-    $errorsalary;
-}
-else if (isset($errortime)){
-    $errortime;
-}
-else if(isset($designation)){
-    $designation;
-}
-else {
-switch($designation){
-    case "junior":
-        $houseRent= "Not applicable";
-        $specialAllowance="Not applicable";
-        $convey="Not applicable";
-        $AdditionalAllow="Not applicable";
-        $onCallShift="Not applicable";
-        $stat="Not applicable";
-        $PF="Not applicable";
-        $proffesionalTax="Not applicable";
-        $incomeTax="Not applicable";
-        $GROSS=$salary;
-        $DEDUCTIONGROSS= 0 ;
-        $NETPAY=$GROSS-$DEDUCTIONGROSS;//
-        break;
-
-    case "senior":
-        $houseRent= 3000;
-        $specialAllowance=1000;
-        $convey=1000;
-        $AdditionalAllow=1000;
-        $onCallShift=1000;
-        $stat=500;
-        $PF=($salary* 10)/(100);//
-        $proffesionalTax=($salary*10)/100;//
-        $incomeTax=($salary*10)/100; //
-        $GROSS=$salary+$onCallShift+$AdditionalAllow+$houseRent+$specialAllowance
-        +$convey;
-        $DEDUCTIONGROSS=$incomeTax+$proffesionalTax+$PF;
-        $NETPAY=$GROSS-$DEDUCTIONGROSS;
-       
-        break;
-
-    case "manager":
-            $houseRent=5000;
-            $specialAllowance=3000;
-            $convey=3000;
-            $AdditionalAllow=3000;
-            $onCallShift=3000;
-            $stat=1000;
-            $PF=($salary*(19))/(100);
-            $proffesionalTax=($salary * (19))/(100);
-            $incomeTax=($salary * (19))/(100);
+        case "junior":
+            $houseRent= "Not applicable";
+            $specialAllowance="Not applicable";
+            $convey="Not applicable";
+            $AdditionalAllow="Not applicable";
+            $onCallShift="Not applicable";
+            $stat="Not applicable";
+            $PF="Not applicable";
+            $proffesionalTax="Not applicable";
+            $incomeTax="Not applicable";            
+            $GROSS=$salary;
+            $DEDUCTIONGROSS= 0 ;
+            if (isset($errorname)){
+                $errorname;        
+            }
+            else if (isset($errorsalary)){
+                $errorsalary;        
+            }
+            else if (isset($errortime)){
+                $errortime;        
+            }
+            else if(isset($errordesignation)){
+                $errordesignation;        
+            }
+            else{
+            $NETPAY= $GROSS-$DEDUCTIONGROSS;}
+            break;
+    
+        case "senior":
+            $houseRent= 3000;
+            $specialAllowance=1000;
+            $convey=1000;
+            $AdditionalAllow=1000;
+            $onCallShift=1000;
+            $stat=500;
+            if (isset($errorname)){
+                $errorname;        
+            }
+            else if (isset($errorsalary)){
+                $errorsalary;        
+            }
+            else if (isset($errortime)){
+                $errortime;        
+            }
+            else if(isset($errordesignation)){
+                $errordesignation;        
+            }
+            else{
+            $PF=($salary* 10)/(100);//
+            $proffesionalTax=($salary*10)/100;//
+            $incomeTax=($salary*10)/100; //
             $GROSS=$salary+$onCallShift+$AdditionalAllow+$houseRent+$specialAllowance
             +$convey;
             $DEDUCTIONGROSS=$incomeTax+$proffesionalTax+$PF;
             $NETPAY=$GROSS-$DEDUCTIONGROSS;
-            
-          break;
-
-    case "blank":
-          
-          break;
-
-
+            }
+            break;
+    
+        case "manager":
+                $houseRent=5000;
+                $specialAllowance=3000;
+                $convey=3000;
+                $AdditionalAllow=3000;
+                $onCallShift=3000;
+                $stat=1000;
+                if (isset($errorname)){
+                    $errorname;        
+                }
+                else if (isset($errorsalary)){
+                    $errorsalary;        
+                }
+                else if (isset($errortime)){
+                    $errortime;        
+                }
+                else if(isset($errordesignation)){
+                    $errordesignation;        
+                }
+                else{
+                $PF=($salary*(19))/(100);
+                $proffesionalTax=($salary * (19))/(100);
+                $incomeTax=($salary * (19))/(100);
+                $GROSS=$salary+$onCallShift+$AdditionalAllow+$houseRent+$specialAllowance
+                +$convey;
+                $DEDUCTIONGROSS=$incomeTax+$proffesionalTax+$PF;
+                $NETPAY=$GROSS-$DEDUCTIONGROSS;}
+              break;
+    }
+   }
 }
-}
-
-
 
 }
 ?>
@@ -157,7 +179,7 @@ switch($designation){
                 <td><label for="">Name :</label></td>
                 <td><input style="width:60%" type="text" name="name" id="">
                     <?php if (isset($errorname)){
-                            echo $errorname ;
+                             echo "<span style='color :red'>".$errorname."</span>" ;
                     }?>
             </td>
             </tr>
@@ -165,7 +187,8 @@ switch($designation){
                 <td><label for="" name="">salary :</label></td>
                 <td><input style="width:60%" type="text" name="salary" id="">
                     <?php if (isset($errorsalary)){
-                            echo $errorsalary ;}?> </td>
+                       echo  "<span style='color :red'>".$errorsalary."</span>";
+                                                     }?> </td>
             </tr>
             <tr>
                 <td>Month</td>
@@ -186,7 +209,7 @@ switch($designation){
                         <option value="december">December</option>
                     </select>
                     <?php if (isset($errortime)){
-                            echo $errortime="Select Valid Month";
+                            echo  "<span style='color :red'>".$errortime="Select Valid Month"."</span>";
                     }?>
                 </td>
             </tr>
@@ -198,8 +221,8 @@ switch($designation){
                         <option value="junior">Junopr Developer</option>
                         <option value="senior">Senior Developer</option>
                         <option value="manager">Department Head</option></select>  
-                    <?php if (isset($errordesignation)){
-                            echo $errordesignation = "Select Valid Option";
+                    <?php if (isset($errordesignation)){                           
+                            echo  "<span style='color :red'>".$errordesignation = "Select Valid Option"."</span>";
                     }?>                  
                 </td>
             </tr>
@@ -216,23 +239,21 @@ switch($designation){
 if(isset($_POST['submit'])){
 
     if (isset($errorname)){
-        $errorname;
+        $errorname;        
     }
     else if (isset($errorsalary)){
-        $errorsalary;
+        $errorsalary;        
     }
     else if (isset($errortime)){
-        $errortime;
+        $errortime;        
     }
-    else if(isset($designation)){
-        $errordesignation;
+    else if(isset($errordesignation)){
+        $errordesignation;        
     }
-    else {
-
-       
+    else{
 ?>
 
-    <table style="width:90%;font-size:12px">
+<table style="width:90%;font-size:12px">
         <tr>
             <td style="text-align:center;font-size:30px;padding:10px" colspan="4"> Pay Sleep Of month <?php echo $time ?> 2020 </td>
         </tr>
@@ -338,7 +359,6 @@ if(isset($_POST['submit'])){
         </tr>
         
     </table>
-
 <?php
 }
 }
