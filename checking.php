@@ -12,11 +12,12 @@
             if($number==1) {
                 echo "Number is Not Prime";
             } else {
+               for($number=1; $number<=100;$number++ )
 
                 $count = 0;
                 for($i = 1; $i<=$number; $i++) {
 
-                    if($number%$i==0) {  // 4 // 4%1 // 
+                    if($number%$i== 0) {  // 4 // 4%1 // 
                         $count++; // 1 // 2 // 3
                     }
 
@@ -48,3 +49,4 @@
     </form>
 </body>
 </html>
+
