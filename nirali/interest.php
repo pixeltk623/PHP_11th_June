@@ -20,12 +20,6 @@
                         $Time = $_POST['Time'];
                 }   
 
-                if ($_POST['days']=='') {
-                        $error4 = "<span style='color:black'>Error2</span>";
-                } else{
-                        $Daysinyear = $_POST['days'];
-                }  
-
                 if($_POST['principle'] != '' && $_POST['annual'] != '' && $_POST['Time'] != '') {
 
                         $iAmount = ($principle * $Annual * $Time)/100;
@@ -87,18 +81,7 @@
                                 echo $error3;
                         }
                 ?> 
-        <br><br>
         
-
-        <label>Days In Year</label>
-        <select name="days"><option value="select">365</option>
-                    <option value="select">360</option>
-      </select>
-        <?php 
-                        if (isset($error4)) {
-                                echo $error4;
-                        }
-                ?> 
 
       <br><br>
         
