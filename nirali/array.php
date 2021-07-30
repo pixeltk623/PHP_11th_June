@@ -1,16 +1,15 @@
 <?php 
 
-//$a = array(45,78,78,78,78,22,45);
+$a = array(45,78,78,78,78,22,45);
 
-//$b = array("Nirali","Baroda",20,87.55,true);
+$b = array("Nirali","Baroda",20,87.55,true);
 
-//echo "<pre>";
-//var_dump($b);
+echo "<pre>";
+var_dump($b);
 
-//echo "My Name is ".$b[0]. " and I am from ".$b[1];
-//echo "<pre>";
-
-//print_r($b);
+echo "My Name is ".$b[0]. " and I am from ".$b[1];
+echo "<pre>";
+print_r($b);
 
 //echo $a;
 
@@ -103,7 +102,7 @@
 	// 	echo $valueOfName['clg_name'];
 	// }
 
-	// die;
+	 
 
 
 	// for ($i=0; $i < count($listOfCollege); $i++) { 
