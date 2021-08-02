@@ -4,6 +4,7 @@
      $number = $_POST['number'];
  
 $rev=0;
+
         for($i=$number;$i>1;$i=$i/10){
             $r =$i % 10 ;
             $rev=($rev *10 ) + $r;            
