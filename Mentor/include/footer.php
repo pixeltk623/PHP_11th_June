@@ -1,3 +1,10 @@
+Web Design
+
+HTML
+CSS
+Js
+Jquery
+Bootstarp
 <?php 
     
     include_once 'include/config.php';
@@ -97,9 +104,9 @@
             <ul>
                 <?php 
                     foreach ($finalData as $key => $value) {
-                        ?>
-                            <li><i class="<?php echo $value['class']; ?>"></i> <a href="#"><?php echo $value['name']; ?></a></li>
-                        <?php
+                        
+                            echo "<li><i class='".$value['class']."'></i> <a href=''>".$value['name']."</a></li>";
+                        
                     }
                 ?>
             </ul>

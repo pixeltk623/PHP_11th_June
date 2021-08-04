@@ -16,13 +16,14 @@ if(isset($_POST['submit'])){
             if(strlen($_POST['password'])> 10 ||strlen( $_POST['password'] < 3)){
                 $errorPass = ' Password length Invalid Enter Between 3 & 10 character';
             }
-        }
-        else if($_POST['username'] != 'sandip' || $_POST['username'] !='1996'){
+            else if($_POST['username'] != 'sandip' || $_POST['username'] !='1996'){
             $errorUser = ' Username is Wrong ';
             if($_POST['password'] != '123456'){
                 $errorPass = ' Password is Wrong ';  
             }
         }
+        }
+        
         else if($_POST['username'] == 'sandip' || $_POST['username'] =='1996' && $_POST['password'] == '123456' ){
             $_SESSION['u'] = $_POST['username'] ;
             header("Location: home.php");
