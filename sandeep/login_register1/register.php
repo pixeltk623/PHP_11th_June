@@ -1,9 +1,5 @@
 <?php
-$conn = mysqli_connect('localhost','root','','login_system');
-
-if(!isset($conn)){
-    echo "not connected"; 
-}
+require_once 'config.php';
 
 if(isset($_POST['submit'])){
     $username = $_POST['username'];
@@ -54,7 +50,7 @@ if(isset($_POST['submit'])){
             if ($result) {
                 $message = "<h6 style='color: green; text-align: center;margin:0;'>User Registration Done</h6>";
              } else {
-                 $message = "<h6 style='color: red; text-align: center;margin:0;'>Something Error</h6>";
+                 $message = "<h6 style='color: red; text-align: center;margin:0;'>Please Check Credentials</h6>";
             }
         } 
     }
@@ -165,11 +161,12 @@ if(isset($_POST['submit'])){
                         echo "<span style=color:red>".$errorCPass."<?span>";
                     }
                     ?>
-
             </td>
             </tr>
             <tr>
                 <td   style="text-align: center;padding:8px" colspan="2"><input type="submit" name="submit" id="" VALUE="REGISTER">
+                <br><br>
+                Already Have an Account ? <b><a href="login.php">LOGIN HERE..</a></b>                
             </td>
             </tr>
         </table>

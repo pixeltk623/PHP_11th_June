@@ -1,9 +1,7 @@
 <?php
     session_start();
-   $conn = mysqli_connect('localhost','root','','login_system');
-    if(!isset($conn)){
-        echo "not connected"; 
-    }
+    require_once 'config.php';
+   
     if (isset($_POST['submit'])) {
     $username = $_POST['username'];
     $password =($_POST['password']);
@@ -94,7 +92,7 @@
             </tr>
             <tr>
                 <td>username :</td>
-                <td><input type="text" name="username" id="" placeholder="Enter Username or Email">
+                <td><input type="text" name="username" id="" placeholder="Enter Username or Email" required>
                 <br> <?php
                     if(isset($errorName)){
                         echo "<span style=color:red>".$errorName."<?span>";
@@ -104,7 +102,7 @@
             </tr>
             <tr>
                 <td>password :</td>
-                <td><input type="password" name="password" id="" placeholder="Enter Password">
+                <td><input type="password" name="password" id="" placeholder="Enter Password" required>
                 <br> <?php
                     if(isset($errorPass)){
                         echo "<span style=color:red>".$errorPass."<?span>";
