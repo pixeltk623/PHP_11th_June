@@ -1,0 +1,24 @@
+User Managaement system (Project) => UMS
+
+Admin
+	=> Login
+	=> dashboard Page
+	=> All user list (Edit Delete, add)
+User
+	=> Register
+	=> Login
+	=> User dashboard Page (Profile, Edit)
+	
+id
+Name
+Email
+username
+password
+Mobile
+date
+Gender
+Hobby
+City
+Profile Pic
+c
+u
