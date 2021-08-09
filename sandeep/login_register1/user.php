@@ -55,7 +55,7 @@ $EmployeeDetail= array(
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Array Table</title>
+    <title>Dashboard</title>
     <style>
        
         button{
@@ -70,7 +70,6 @@ $EmployeeDetail= array(
         }a{
             color: white;
             text-decoration: none;
-
         }
         table{
             width: 80%;
