@@ -1,33 +1,143 @@
 <?php 
 	include_once 'database/database.php';
 
+	if (isset($_POST['login'])) {
+		
+		$unameEmail = $_POST['uemail'];
+		$password = md5($_POST['password']);
+
+		$query = "SELECT * FROM users WHERE username = '$unameEmail'";
+
+	    $result = mysqli_query($conn, $query);
+
+	      	if ($result->num_rows>0) {
+	          
+	         echo  $queryCp = "SELECT * FROM users WHERE (username = '$unameEmail' AND password = '$password') OR (email = '$unameEmail' AND password = '$password')";
+	          $resultCp = mysqli_query($conn, $queryCp);
+
+	          if($resultCp->num_rows>0) {
+	            header("Location: dashboard.php");
+	          } else {
+	           echo $message =  "<h5 style='color: red; text-align: center;'>Password is Wrong</h5>";
+	          }
+
+	        } else {
+	           echo $message =  "<h5 style='color: red; text-align: center;'>Username is InValid</h5>";
+	    }
+
+	}
+
 	if (isset($_POST['signup'])) {
 		
 		$fullName = $_POST['fname'];
 		$uname = $_POST['uname'];
 		$email = $_POST['email'];
 		$mobile = $_POST['mobile'];
-		$password = $_POST['password'];
+		$password = md5($_POST['password']);
 		$address = $_POST['address'];
 		$city = $_POST['city'];
 
 		if (isset($_POST['gender'])) {
-			echo $gender = $_POST['gender'];
+			$gender = $_POST['gender'];
 		} else {
-			echo $gender = "";
+			$gender = "";
 		}
 
 		if (isset($_POST['hobby'])) {
 			$hobby = $_POST['hobby'];
-			echo $hobby =  implode(",", $hobby);
+			$hobby =  implode(",", $hobby);
 			
 		} else {
-			echo $hobby = "";
+			$hobby = "";
 		}
 		
 		
 		$dob = $_POST['dob'];
 
+		$profilePic = $_FILES['profilePic'];
+
+
+
+		
+
+		$size = number_format($profilePic['size'] / 1024);
+
+		$ext = pathinfo($profilePic['name'], PATHINFO_EXTENSION);
+
+		$newFileName = time().".".$ext;
+
+
+		$queryCheckEmail = "SELECT * FROM users WHERE email = '$email'";
+
+        $resultQ = mysqli_query($conn, $queryCheckEmail);
+
+        if($resultQ->num_rows>0) {
+            $errorEName =  "Email is Alreday Exits";
+            $error3 = false;
+        } else {
+            $error3 = true;
+        }
+
+        $queryCheckUserName = "SELECT * FROM users WHERE username = '$uname'";
+
+        $resultU = mysqli_query($conn, $queryCheckUserName);
+
+        if($resultU->num_rows>0) {
+            $errorUName =   "Username is Alreday Exits";
+            $error4 = false;
+        } else {
+            $error4 = true;
+        }
+
+
+
+		if ($size>=10 && $size<=100) {
+			$error1 = true;
+		} else {
+			echo "Size Is Large";
+			$error1 = false;
+		}
+
+		if($ext=='jpg' || $ext=='png' || $ext=='jpeg') {
+			echo "Ok";
+			$error2 = true;
+		} else {
+			echo "Invalid File Type";
+			$error2 = false;
+		}
+
+		// if (file_exists("uploads/". $newFileName)) {
+		// 	echo "Present";
+		// } else {
+		// 	echo "Nahi hai";
+		// }
+
+
+		if ($error2 && $error1 && $error3 && $error4) {
+
+			$query = "INSERT INTO `users`(`full_name`, `username`, `email`, `password`, `gender`, `hobby`, `city`, `dob`, `profile_pic`, `mobile_no`, `address`) VALUES ('$fullName','$uname','$email','$password','$gender','$hobby','$city','$dob','$newFileName', '$mobile','$address')";
+
+
+			$result = mysqli_query($conn, $query);
+
+			if ($result) {
+
+				move_uploaded_file($profilePic['tmp_name'], "uploads/". $newFileName);
+				
+				$message = "<h2 style='text-align: center; color: white;'>Registration Done</h2>";
+	 
+			} else {
+				$message = "<h2 style='text-align: center; color: red;'>Something Error</h2>";
+			}
+		} else {
+
+			$message = "Error";
+
+		}
+	
+		
+
+		
 
 
 	}
@@ -58,6 +168,11 @@
 <body>
 <div class="main">
 		<h1>Registration and Login System</h1>
+		<?php 
+			if (isset($message)) {
+				echo $message;
+			}
+		?>
 	 <div class="sap_tabs">	
 			<div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
 			  <ul class="resp-tabs-list">
