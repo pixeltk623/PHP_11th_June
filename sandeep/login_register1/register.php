@@ -2,97 +2,103 @@
 include_once 'config.php';
 
 if(isset($_POST['submit'])){
-    $username = $_POST['username'];
-    $fullName  = $_POST['fullname'];
-    $Email = $_POST['email'];
-    $mobile = $_POST['mobile'];
-    $address = $_POST['address'];
-    $dob = $_POST['dob'];
-    $city = $_POST['city'];
-    $gender = $_POST['gender'];
-    $hobby = $_POST['hobby'];
+     $username = $_POST['username'];
+     $fullName  = $_POST['fullname'];
+     $Email = $_POST['email'];
+     $mobile = $_POST['mobile'];
+     $address = $_POST['address'];
+     $dob = $_POST['dob'];
+     $city = $_POST['city'];
+     $gender = $_POST['gender'];
+     $hobby = $_POST['hobby'];
     $photo =  $_FILES['photo'];
-    $password = $_POST['password'];
-    $cPassword = $_POST['cpassword'];
-    //----------------------------------------------------------------
-    if(strlen($mobile) != 10){
-      $mobileError = "Please Enter 10 Digits Only";
-    }
-    //----------------------------------------------------------------
-    $date1 = date("y-m-d");
-    $diff = date_diff(date_create($dob),date_create(($date1)));
-    if(($diff->y) <=18){
-        $dobError = "You Are Minor To Register Or Check D.O.B.";
-    }
-    //----------------------------------------------------------------
-    $photoSize = number_format($photo['size']/1024);
-    if($photoSize>=10 && $photoSize<=100){
-        $photo;
-    }else{
-        $photoSizeEror = "Photo Size Invalid";
-    }
+     $password = $_POST['password'];
+     $cPassword = $_POST['cpassword'];
+    //--//--//--//--------------
+     if(strlen($mobile) != 10){
+       $mobileError = "Please Enter 10 Digits Only";
+     }
+      //--//--//--//--------------
+      if($hobby == ''){
+         $hobbyError = "Please Choose Atleast One Hobby";
+       }
+     //--//--//--//--------------
+     $date1 = date("y-m-d");
+     $diff = date_diff(date_create($dob),date_create(($date1)));
+     if(($diff->y) <=18){
+         $dobError = "You Are Minor To Register Or Check D.O.B.";
+     }
+    //--//--//--//--------------
+    
 
     $extension = pathinfo($photo['name'], PATHINFO_EXTENSION);
     if($extension == "png" ||  $extension == "PNG" || $extension == "JPG" ||$extension == "jpg" || $extension == "jpeg"){
-        $photo;
+        $photoSize = number_format($photo['size']/1024);
+        if($photoSize>=10 && $photoSize<=100){
+            $photo;
+        }else{
+            $photoSizeEror = "Photo Size Invalid";
+        }
     }else{
         $photoExtensionError = "Invalid Photo Type";
     }
-	$newPhotoName = $username.time().".".$extension;
-    
-    if (file_exists("uploads/". $newPhotoName)) {
-			echo "Present";
-            $photoExistError= "Please Upload Photo With Another File Name";
-		} else {
-			$photo;
-		}
-    //----------------------------------------------------------------
-    $queryCheckEmail = "SELECT * FROM users WHERE  email = '$Email' ";
-    $resultQ = mysqli_query($conn,$queryCheckEmail);
-    if($resultQ->num_rows>0){
-        $errorMail = "Email Exist";
-    }else{
-    $error1 = true;
-    }
-    //----------------------------------------------------------------
-    $queryCheckName = "SELECT * FROM users WHERE  username = '$username' ";
-    $resultQU = mysqli_query($conn,$queryCheckEmail);
-    if($resultQU->num_rows>0){
-        $errorUser = "Username Exist";
-    }else{
-    $error2 = true;
-    }
-    //----------------------------------------------------------------
 
-    if(strlen($password)<6){
-        $errorPass = "Entered Password is too short";
-                if($password != $cPassword){
-                    $errorCPass = "Please Enter Same Password";
-                }else{
-                    $cPassword;
-                }
+
+	 $newPhotoName = $username.time().".".$extension;
+    
+     if (file_exists("uploads/". $newPhotoName)) {
+	 		echo "Present";
+             $photoExistError= "Please Upload Photo With Another File Name";
+	 	} else {
+	 		$photo;
+	 	}
+    //--//--//--//--------------
+     $queryCheckEmail = "SELECT * FROM users WHERE  email = '$Email' ";
+     $resultQ = mysqli_query($conn,$queryCheckEmail);
+     if($resultQ->num_rows>0){
+         $errorMail = "Email Exist";
+     }else{
+     $error1 = true;
      }
+     //--//--//--//--------------
+     $queryCheckName = "SELECT * FROM users WHERE  username = '$username' ";
+     $resultQU = mysqli_query($conn,$queryCheckEmail);
+     if($resultQU->num_rows>0){
+         $errorUser = "Username Exist";
+     }else{
+     $error2 = true;
+     }
+     //--//--//--//--------------
+
+     if(strlen($password)<6){
+         $errorPass = "Entered Password is too short";
+                 if($password != $cPassword){
+                     $errorCPass = "Please Enter Same Password";
+                 }else{
+                     $cPassword;
+                 }
+      }
+      else{
+         $password;
+      }
+    //--//--//--//--------------
+     if(strlen($username)>10) {
+         $errorUser = "Name is too long";
+         }
      else{
-        $password;
-     }
-    //----------------------------------------------------------------
-    if(strlen($username)>10) {
-        $errorUser = "Name is too long";
-        }
-    else{
-        if (isset($error1) && isset($error2) && !isset($mobileError)&& !isset($photoExtensionError)&& !isset($photoExistError)&& !isset($photoSizeEror) && !isset($errorCPass) &&!isset($errorPass) && !isset($dobError)) {
-            $query =" INSERT INTO users(`full_name`, `username`, `email`, `mobile`, `address`, `gender`, `hobby`, `dob`, `profile_pic`, `city`, `Password`)
-            VALUES('$fullName' ,'$username' ,'$Email','$mobile','$address','$gender','$hobby','$dob','$photo','$city','$password')";        
-            $result = mysqli_query($conn,$query);
+         if (isset($error1) && isset($error2) && !isset($mobileError)&& (!isset($photoExtensionError) || !isset($photoSizeEror)) && !isset($photoExistError) && !isset($errorCPass) &&!isset($errorPass) && !isset($dobError) && !isset($hobbyError)) {
+             $query =" INSERT INTO users(`full_name`, `username`, `email`, `mobile`, `address`, `gender`, `hobby`, `dob`, `profile_pic`, `city`, `Password`)
+             VALUES('$fullName' ,'$username' ,'$Email','$mobile','$address','$gender','$hobby','$dob','$photo','$city','$password')";        
+             $result = mysqli_query($conn,$query);
         
-            if ($result) {
-                move_uploaded_file($photo['tmp_name'], "uploads/". $newPhotoName);
-                $message = "<h6 style='color: green; text-align: center;margin:0;'>User Registration Done</h6>";
-             } else {
-                 $message = "<h6 style='color: red; text-align: center;margin:0;'>Please Check Credentials</h6>";
-            }
-        } 
-    }
+             if ($result) {
+                 move_uploaded_file($photo['tmp_name'], "uploads/". $newPhotoName);
+                 $message = "<h6 style='color: green; text-align: center;margin:0;'>User Registration Done</h6>";
+              } else {
+                  $message = "<h6 style='color: red; text-align: center;margin:0;'>Please Check Credentials</h6>";
+             }
+         } 
+     }
 }
 
 
@@ -115,6 +121,7 @@ if(isset($_POST['submit'])){
             margin: auto;
             transform: translateY(2vw);
         }
+        
         td{
             border: 1px solid cadetblue;
             padding: 15px;
@@ -142,6 +149,8 @@ if(isset($_POST['submit'])){
         input[type = checkbox] {
         margin-right: 6px;
         margin-left:60px ;
+
+        
         }
         input[type = submit]{
             background-color: cadetblue;
@@ -168,21 +177,21 @@ if(isset($_POST['submit'])){
                     }?>
                 </th>
             </tr>
-           <tr>
+            <tr>
                 <td>FULL NAME :</td>
                 <td><input type="text" name="fullname" id="" placeholder="Enter Full Name" required></td>
             </tr>
             <tr>
                 <td>USERNAME :</td>
-                <td><input type="text" name="username" id="" placeholder="Enter Username" required><br>
+                <td><input type="text" name="username" id="" placeholder="Enter Username (Less Than 10 character)" required><br>
                     <?php
                     if(isset($errorUser)){
                         echo "<span style=color:red>".$errorUser."<?span>";
                     }
                     ?>
                 </td>
-            </tr>
-            <tr>
+            </tr> 
+             <tr>
                 <td>EMAIL :</td>
                 <td><input type="email" name="email" id="" placeholder="Enter Email" required>
                 <br> <?php
@@ -194,7 +203,7 @@ if(isset($_POST['submit'])){
             </tr>
             <tr>
                 <td>MOBILE NO.</td>
-                <td><input type="number" name="mobile" id="Mnumber" placeholder="Enter Mobele Number(10-Digits only)" required>
+                <td><input type="number" name="mobile" id="Mnumber" placeholder="Enter Mobele Number (10-Digits only)" required>
                 <br> <?php
                     if(isset($mobileError)){
                         echo "<span style=color:red>".$mobileError."<?span>";
@@ -217,7 +226,7 @@ if(isset($_POST['submit'])){
                     }
                     ?>
             </td>
-            </tr>    
+            </tr>     
 
             <tr>
                 <td>CITY :</td>
@@ -229,15 +238,20 @@ if(isset($_POST['submit'])){
                     <option value="Vadodra">Vadodra</option>
                 </select></td>
             </tr>
-
             <tr>
                 <td>HOBBY :</td>
                 <td style="text-align: left;"><input type="checkbox" name="hobby" id="football"  >FOOTBALL
                     <input  style="margin-left: 45px;" type="checkbox" name="hobby" id="basketball"  >BASKETBALL <br>
                     <input type="checkbox" name="hobby" id="cricket"  >CRICKET
-                    <input type="checkbox" name="hobby" id="walleyball"  >WALLEYBALL</td>
+                    <input type="checkbox" name="hobby" id="walleyball"  >WALLEYBALL
+                <br> <?php
+                    if(isset($hobbyError)){
+                        echo "<span style=color:red;>".$hobbyError."<?span>";
+                    }
+                    ?>
+                </td>
             </tr> 
-            <tr>
+             <tr>
                 <td>ADDRESS :</td>
                 <td><textarea style="width: 100%;" name="address" id="address" rows="5" required></textarea ></td>
             </tr>
@@ -260,7 +274,7 @@ if(isset($_POST['submit'])){
             </td>
             </tr> 
                 
-            <tr>
+             <tr>
                 <td>PASSWORD :</td>
                 <td><input type="text" name="password" id="" placeholder="Enter Password (Not Lessthan 6 Character)"required><br>
                 <?php
@@ -280,7 +294,7 @@ if(isset($_POST['submit'])){
                     }
                     ?>
             </td>
-            </tr> 
+            </tr>  
                 <td   style="text-align: center;padding:8px" colspan="2"><input type="submit" name="submit" id="" VALUE="REGISTER">
                 <br><br>
                 Already Have an Account ? <b><a href="login.php">LOGIN HERE..</a></b>                
