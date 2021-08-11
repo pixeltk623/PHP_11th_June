@@ -3,6 +3,25 @@
     session_start();
     include_once 'database/database.php';
 
+    if (isset($_POST['Update'])) {
+       
+       $name = $_POST['name']; 
+
+       $query = "UPDATE `users` SET `full_name`='$name' WHERE id=".$_SESSION['user_id'];
+
+
+        $result = mysqli_query($conn, $query);
+
+        if ($result) {
+
+           
+            $message = "<h2 style='text-align: center; color: green;'>Updated</h2>";
+ 
+        } else {
+            $message = "<h2 style='text-align: center; color: red;'>Something Error</h2>";
+        }       
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -77,7 +96,7 @@
 
         ?>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="profile.php"><span class="glyphicon glyphicon-log-in"></span> <?php echo $userDetails['full_name']; ?> (My Profile) <img src="uploads/<?php echo $userDetails['profile_pic'] ?>" width="20" style="border-radius: 50%;"></a></li>
+            <li><a href="register.php"><span class="glyphicon glyphicon-log-in"></span> <?php echo $userDetails['full_name']; ?> (My Profile) <img src="uploads/<?php echo $userDetails['profile_pic'] ?>" width="20" style="border-radius: 50%;"></a></li>
             <li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
         </ul>
         <?php
@@ -105,7 +124,19 @@
     </div>
     <div class="col-sm-8 text-left"> 
       <h1>Welcome <?php echo $userDetails['full_name'] ?></h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <?php 
+        if (isset($message)) {
+            echo $message;
+        }
+      ?>
+      <form method="post">
+          <div class="form-group">
+              <label>Name</label>
+              <input type="text" class="form-control" name="name" value="<?php echo $userDetails['full_name'] ?>">
+          </div>
+
+          <input type="submit" name="Update" value="Update" class="btn btn-primary">
+      </form>
       <hr>
       <h3>Test</h3>
       <p>Lorem ipsum...</p>
