@@ -11,7 +11,10 @@ if(isset($_POST['submit'])){
      $city = $_POST['city'];
      $gender = $_POST['gender'];
      $hobby = $_POST['hobby'];
-    $photo =  $_FILES['photo'];
+    if(isset($hobby)){
+        $hobby =implode(",",$hobby);
+    }
+      $photo =  $_FILES['photo'];
      $password = $_POST['password'];
      $cPassword = $_POST['cpassword'];
     //--//--//--//--------------
@@ -88,17 +91,19 @@ if(isset($_POST['submit'])){
      else{
          if (isset($error1) && isset($error2) && !isset($mobileError)&& (!isset($photoExtensionError) || !isset($photoSizeEror)) && !isset($photoExistError) && !isset($errorCPass) &&!isset($errorPass) && !isset($dobError) && !isset($hobbyError)) {
              $query =" INSERT INTO users(`full_name`, `username`, `email`, `mobile`, `address`, `gender`, `hobby`, `dob`, `profile_pic`, `city`, `Password`)
-             VALUES('$fullName' ,'$username' ,'$Email','$mobile','$address','$gender','$hobby','$dob','$photo','$city','$password')";        
+             VALUES('$fullName' ,'$username' ,'$Email','$mobile','$address','$gender','$hobby','$dob','$newPhotoName','$city','$password')";        
              $result = mysqli_query($conn,$query);
         
              if ($result) {
                  move_uploaded_file($photo['tmp_name'], "uploads/". $newPhotoName);
+                 $_SESSION['Uphoto'] = $photo;
                  $message = "<h6 style='color: green; text-align: center;margin:0;'>User Registration Done</h6>";
-              } else {
+                } else {
                   $message = "<h6 style='color: red; text-align: center;margin:0;'>Please Check Credentials</h6>";
              }
          } 
      }
+     
 }
 
 
@@ -114,22 +119,27 @@ if(isset($_POST['submit'])){
         *{
             margin: 0;padding: 0;box-sizing: border-box;
         }
+        body{
+            background: -webkit-linear-gradient(left, #0072ff, #8811c5);
+
+        }
          table{
+             background-color: white;
             width: 60%;
-            border :3px solid cadetblue ;
+            border :3px solid #034a96 ;
             border-collapse: collapse;
             margin: auto;
-            transform: translateY(2vw);
+            transform: translate(6vw,2vw);
         }
         
         td{
-            border: 1px solid cadetblue;
+            border: 1px solid #034a96;
             padding: 15px;
-            color: cadetblue;
+            color: #034a96;
         }
         th{
             text-align: center;
-            color: cadetblue;
+            color: #034a96;
             padding: 15px;
             font-size: 30px;
 
@@ -153,7 +163,7 @@ if(isset($_POST['submit'])){
         
         }
         input[type = submit]{
-            background-color: cadetblue;
+            background-color: #034a96;
             border: none;
             color: white;
             width: 100px;
@@ -163,11 +173,46 @@ if(isset($_POST['submit'])){
         }
         td a{
             text-decoration: none;
-            color: cadetblue;
+            color: #034a96;
+        }
+        .btn{
+            color: #034a96;
+            width: 21vw;
+            height: 10vh;
+            font-size: 1rem;
+            background-color: white;
+           padding: 0 5px 0 10px; 
+            
+            display: inline-flex;
+            position: absolute;
+            text-align: center;
+            align-items: center;
+            left: 1vw;
+            top: 5vh;
+            border-radius: 38px;
+            font-weight: 900;
+        }
+        .btn1{
+            line-height: 35px;
+            width: 11vw;
+            height: 8vh;
+            margin:0 0 0 10px ;
+            background-color: #034a96;
+            text-align: center;
+            font-weight: 900;
+            border-radius: 38px;
+        }
+        a{
+            font-size: 1.3rem;
+            color: white;
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
+    <div class="btn">REGISTERS 
+        <div class="btn1"><a href="login.php">LOG IN</a></div>
+    </div>
     <form method="POST" enctype="multipart/form-data">
         <table>
             <tr>
@@ -183,8 +228,8 @@ if(isset($_POST['submit'])){
             </tr>
             <tr>
                 <td>USERNAME :</td>
-                <td><input type="text" name="username" id="" placeholder="Enter Username (Less Than 10 character)" required><br>
-                    <?php
+                <td><input type="text" name="username" id="" placeholder="Enter Username (Less Than 10 character)" required>
+                <br><?php
                     if(isset($errorUser)){
                         echo "<span style=color:red>".$errorUser."<?span>";
                     }
@@ -214,8 +259,8 @@ if(isset($_POST['submit'])){
             <tr>
                 <td>GENDER :</td>
                 <td style="text-align: center;">
-                <input  type="radio" name="gender" id="male" required>MALE
-                <input style="margin-left: 70px;" type="radio" name="gender" id="female" required>FEMALE</td>
+                <input  type="radio" name="gender" value="male" required>MALE
+                <input style="margin-left: 70px;" type="radio" name="gender" value="female" required>FEMALE</td>
             </tr>   
             <tr>
                 <td>D.O.B.</td>
@@ -240,10 +285,10 @@ if(isset($_POST['submit'])){
             </tr>
             <tr>
                 <td>HOBBY :</td>
-                <td style="text-align: left;"><input type="checkbox" name="hobby" id="football"  >FOOTBALL
-                    <input  style="margin-left: 45px;" type="checkbox" name="hobby" id="basketball"  >BASKETBALL <br>
-                    <input type="checkbox" name="hobby" id="cricket"  >CRICKET
-                    <input type="checkbox" name="hobby" id="walleyball"  >WALLEYBALL
+                <td style="text-align: left;"><input type="checkbox" name="hobby[]" value="football"  >FOOTBALL
+                    <input  style="margin-left: 45px;" type="checkbox" name="hobby[]" value="basketball"  >BASKETBALL <br>
+                    <input type="checkbox" name="hobby[]" value="cricket"  >CRICKET
+                    <input type="checkbox" name="hobby[]" value="walleyball"  >WALLEYBALL
                 <br> <?php
                     if(isset($hobbyError)){
                         echo "<span style=color:red;>".$hobbyError."<?span>";

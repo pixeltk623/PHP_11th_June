@@ -1,10 +1,13 @@
 <?php
 session_start();
-if (!isset($_SESSION['username'])) {
-    header("Location: login.php");
-}
+include_once 'config.php';
+// if (!isset($_SESSION['username'])) {
+//     header("Location: login.php");
+// }
+
 
 if(isset($_POST['submit'])){
+    
 $EmployeeDetail= array(
     array( 
         "name"=>"sandip Memariya",
@@ -47,6 +50,7 @@ $EmployeeDetail= array(
         "salary" =>"200000"
     )
 );
+
 }
 ?>
 <!DOCTYPE html>
@@ -55,11 +59,11 @@ $EmployeeDetail= array(
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Array Table</title>
     <style>
        
         button{
-            background-color: cadetblue;
+            background-color: #034a96;
             border: none;
             font-size: 20px;
             width: 130px;
@@ -70,29 +74,51 @@ $EmployeeDetail= array(
         }a{
             color: white;
             text-decoration: none;
+
         }
         table{
             width: 80%;
-            border :3px solid cadetblue ;
+            border :3px solid #034a96 ;
             border-collapse: collapse;
             margin: auto;
             margin-top: 10vh;
            
         }
         td{
-            border: 1px solid cadetblue;
+            border: 1px solid #034a96;
             padding: 5px;
-            color: cadetblue;
+            color: #034a96;
         }
     </style>
 </head>
 <body>
     <form method="post">
-    <input style="border-radius:10px;padding-left:15px;border :1px solid cadetblue;width: 300px;height:30px;" type="text" name="count" id="" placeholder="Enter Number Of Employee Data To Print">
-    <input style="background-color: cadetblue;color:white;border:none;width:120px;height:35px;border-radius:10px;" type="submit" name="submit" id="">
+    <input style="border-radius:10px;padding-left:15px;border :1px solid #034a96;width: 300px;height:30px;" type="text" name="count" id="" placeholder="Enter Number Of Employee Data To Print">
+    <input style="background-color: #034a96;color:white;border:none;width:120px;height:35px;border-radius:10px;" type="submit" name="submit" id="">
     
     <button><a href="logout.php">LOGOUT</a></button>
     <br><br>
+    
+  
+    <form action="" method="post"> 
+        <?php
+        if(isset($_POST['find'])){
+            $userDetails['sr_no'] = $_POST['id'];
+        }
+            $queryCheck = "SELECT * FROM users WHERE  sr_no = ".$_SESSION['user_id'];
+            $resultCheck = mysqli_query($conn, $queryCheck);
+            $userDetails = mysqli_fetch_assoc($resultCheck);
+            echo "<pre>";
+            print_r($userDetails);
+        ?>
+        <img src="uploads/<?php echo $userDetails['profile_pic'] ?>" width="20" style="border-radius: 50%;">
+        <input type="text" name="fname" id="" value="<?php echo $userDetails['full_name'] ?>" >
+
+    </form>
+
+   
+
+
     <?php
     if(isset($_POST['submit'])){
         if(($_POST['count']) == ''){
@@ -104,7 +130,8 @@ $EmployeeDetail= array(
                 count($EmployeeDetail)."</span>";
             }
             else {
-    ?>
+    ?> 
+    
     <table>
       <tr><td colspan="7" style="text-align:center;font-size:30px">SBI MANAGER LIST</td></tr>
     <tr>
