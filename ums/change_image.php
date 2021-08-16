@@ -2,6 +2,33 @@
   
     session_start();
     include_once 'database/database.php';
+    date_default_timezone_set("Asia/Kolkata");
+
+    if (isset($_POST['submit'])) {
+       
+       $profilePic = $_FILES['profilePic'];
+
+       $ext = pathinfo($profilePic['name'], PATHINFO_EXTENSION);
+
+        $newFileName = time().".".$ext;
+
+        
+
+        $query = "UPDATE `users` SET `profile_pic` = '$newFileName' WHERE id=".$_SESSION['user_id'];
+
+
+        $result = mysqli_query($conn, $query);
+
+        if ($result) {
+          move_uploaded_file($profilePic['tmp_name'], "uploads/". $newFileName);
+           
+            $message = "<h2 style='text-align: center; color: green;'>Updated</h2>";
+ 
+        } else {
+            $message = "<h2 style='text-align: center; color: red;'>Something Error</h2>";
+        }       
+        
+    }
 
 ?>
 <!DOCTYPE html>
@@ -27,7 +54,7 @@
     .sidenav {
       padding-top: 20px;
       background-color: #f1f1f1;
-      height: 100%;
+      height: 1800px;
     }
     
     /* Set black background color, white text and some padding */
@@ -75,9 +102,15 @@
 
             $userDetails = mysqli_fetch_assoc($resultProfile);
 
+            $arrayHobby = explode(",", $userDetails['hobby']);
+            // echo "<pre>";
+            // print_r($arrayHobby);
+            // print_r($userDetails);
+
+
         ?>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="profile.php"><span class="glyphicon glyphicon-log-in"></span> <?php echo $userDetails['full_name']; ?> (My Profile) <img src="uploads/<?php echo $userDetails['profile_pic'] ?>" width="20" style="border-radius: 50%;"></a></li>
+            <li><a href="register.php"><span class="glyphicon glyphicon-log-in"></span> <?php echo $userDetails['full_name']; ?> (My Profile) <img src="uploads/<?php echo $userDetails['profile_pic'] ?>" width="20" style="border-radius: 50%;"></a></li>
             <li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
         </ul>
         <?php
@@ -104,8 +137,23 @@
       <p><a href="#">Link</a></p>
     </div>
     <div class="col-sm-8 text-left"> 
-      <h1>Welcome <?php echo (isset($userDetails['full_name'])) ? $userDetails['full_name'] :'' ?></h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <h1>Welcome <?php echo $userDetails['full_name'] ?></h1>
+      <?php 
+        if (isset($message)) {
+            echo $message;
+        }
+      ?>
+      
+      <form method="post" enctype="multipart/form-data">
+        <div class="form-group">
+          <label>Image</label>
+          <img src="uploads/<?php echo $userDetails['profile_pic'] ?>" width=100><br><br>
+          <input type="file" class="form-control-file" name="profilePic" required>
+          <br>
+          <input type="submit" name="submit" class="btn btn-primary">
+        </div>
+      </form>
+
       <hr>
       <h3>Test</h3>
       <p>Lorem ipsum...</p>

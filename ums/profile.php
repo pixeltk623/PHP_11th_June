@@ -2,12 +2,38 @@
   
     session_start();
     include_once 'database/database.php';
+    date_default_timezone_set("Asia/Kolkata");
 
     if (isset($_POST['Update'])) {
        
-       $name = $_POST['name']; 
+        $fullName = $_POST['name'];
+        $uname = $_POST['username'];
+        $email = $_POST['email'];
+        $mobile = $_POST['mobile'];
+        $address = $_POST['Address'];
+        $city = $_POST['city'];
 
-       $query = "UPDATE `users` SET `full_name`='$name' WHERE id=".$_SESSION['user_id'];
+        if (isset($_POST['gender'])) {
+        $gender = $_POST['gender'];
+        } else {
+        $gender = "";
+        }
+
+        if (isset($_POST['hobby'])) {
+        $hobby = $_POST['hobby'];
+        $hobby =  implode(",", $hobby);
+
+        } else {
+        $hobby = "";
+        }
+        $dob = $_POST['dob'];
+
+
+        $currentTime = date("Y-m-d H:i:s");
+
+
+
+        $query = "UPDATE `users` SET `full_name`='$fullName',  `username`='$uname',  `email`='$email',  `gender`='$gender',  `hobby`='$hobby',  `city`='$city',  `dob`='$dob',  `mobile_no`='$mobile',  `address`='$address', `updated_at` = '$currentTime' WHERE id=".$_SESSION['user_id'];
 
 
         $result = mysqli_query($conn, $query);
@@ -46,7 +72,7 @@
     .sidenav {
       padding-top: 20px;
       background-color: #f1f1f1;
-      height: 100%;
+      height: 1800px;
     }
     
     /* Set black background color, white text and some padding */
@@ -94,6 +120,12 @@
 
             $userDetails = mysqli_fetch_assoc($resultProfile);
 
+            $arrayHobby = explode(",", $userDetails['hobby']);
+            // echo "<pre>";
+            // print_r($arrayHobby);
+            // print_r($userDetails);
+
+
         ?>
         <ul class="nav navbar-nav navbar-right">
             <li><a href="register.php"><span class="glyphicon glyphicon-log-in"></span> <?php echo $userDetails['full_name']; ?> (My Profile) <img src="uploads/<?php echo $userDetails['profile_pic'] ?>" width="20" style="border-radius: 50%;"></a></li>
@@ -135,6 +167,94 @@
               <input type="text" class="form-control" name="name" value="<?php echo $userDetails['full_name'] ?>">
           </div>
 
+          <div class="form-group">
+              <label>Username</label>
+              <input type="text" class="form-control" name="username" value="<?php echo $userDetails['username'] ?>">
+          </div>
+
+          <div class="form-group">
+              <label>Email</label>
+              <input type="text" class="form-control" name="email" value="<?php echo $userDetails['email'] ?>">
+          </div>
+
+          <div class="form-group">
+              <label>Gender</label>
+             
+                <input type="radio" class="form-control-check" name="gender" value="Male" <?php
+                    if ($userDetails['gender']=='Male') {
+                    echo "checked";
+                    }
+                 ?>> Male
+                <input type="radio" class="form-control-check" name="gender" value="Female" <?php
+                    if ($userDetails['gender']=='Female') {
+                    echo "checked";
+                    }
+                 ?>> Female
+          </div>
+
+          <div class="form-group">
+                    <label>Hobby</label>
+                    <input type="checkbox" class="form-control-check" name="hobby[]" value="Cricket"
+                    <?php if (in_array("Cricket", $arrayHobby)) {
+                       echo "checked";
+                    } ?>
+                    > Cricket
+                    <input type="checkbox" class="form-control-check" name="hobby[]" value="Football" <?php if (in_array("Football", $arrayHobby)) {
+                       echo "checked";
+                    } ?>> Football
+                    <input type="checkbox" class="form-control-check" name="hobby[]" value="Tenis" <?php if (in_array("Tenis", $arrayHobby)) {
+                       echo "checked";
+                    } ?>> Tenis
+                    <input type="checkbox" class="form-control-check" name="hobby[]" value="Baseball" <?php if (in_array("Baseball", $arrayHobby)) {
+                       echo "checked";
+                    } ?>> Baseball
+          </div>
+
+
+          <div class="form-group">
+              <label>City</label>
+              
+                    <select name="city" class="form-control">
+                        <option value="" <?php echo ($userDetails['city']=='') ? 'selected' : '' ?>>select</option>
+                        <option value="Vadodara"  <?php echo ($userDetails['city']=='Vadodara') ? 'selected' : '' ?>>Vadodara</option>
+                        <option value="Darjeeling" <?php echo ($userDetails['city']=='Darjeeling') ? 'selected' : '' ?>>Darjeeling</option>
+                        <option value="Bhavnagar" <?php echo ($userDetails['city']=='Bhavnagar') ? 'selected' : '' ?>>Bhavnagar</option>
+                        <option value="Anand" <?php echo ($userDetails['city']=='Anand') ? 'selected' : '' ?>>Anand</option>
+                    </select>
+          </div>
+
+
+          <div class="form-group">
+              <label>DOB</label>
+              <input type="date" class="form-control" name="dob" value="<?php echo $userDetails['dob'] ?>">
+          </div>
+
+
+          <div class="form-group">
+              <label>Mobile</label>
+              <input type="text" class="form-control" name="mobile" value="<?php echo $userDetails['mobile_no'] ?>">
+          </div>
+          <div class="form-group">
+              <label>Address</label>
+              <textarea name="Address" class="form-control"><?php echo $userDetails['address']; ?></textarea>
+          </div>
+
+          <div class="form-group">
+              <label>Profile Pic</label>
+              <img src="uploads/<?php echo $userDetails['profile_pic'] ?>" width=100>
+
+              <a href="change_image.php">Change Image</a>
+          </div>
+
+          <div class="form-group">
+              <label>Create Date</label>
+              <input type="datetime" class="form-control" name="" value="<?php echo $userDetails['created_at']; ?>" disabled>
+          </div>
+
+          <div class="form-group">
+              <label>Update Date</label>
+              <input type="datetime" class="form-control" name="" value="<?php echo $userDetails['updated_at']; ?>" disabled>
+          </div>
           <input type="submit" name="Update" value="Update" class="btn btn-primary">
       </form>
       <hr>

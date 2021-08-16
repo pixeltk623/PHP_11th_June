@@ -6,6 +6,8 @@
 		$unameEmail = $_POST['Username'];
 		$password = md5($_POST['password']);
 
+		$query = "";
+
 		$query = "SELECT * FROM users WHERE username = '$unameEmail' OR email = '$unameEmail'";
 
 	    $result = mysqli_query($conn, $query);
@@ -22,16 +24,21 @@
 
           	$userDetails = mysqli_fetch_assoc($resultCp);
 
+
           	// echo "<pre>";
           	// print_r($userDetails);
           	// die;
 
         	if($resultCp->num_rows>0) {
 
-        		$_SESSION['user_id'] = $userDetails['id'];
-        		$_SESSION['is_login'] = true;
+        		if ($userDetails['is_status']==1) {
+          			$_SESSION['user_id'] = $userDetails['id'];
+        			$_SESSION['is_login'] = true;
 
-            	header("Location: index.php");
+            		header("Location: index.php");
+	          	} else {
+	          		$message =  "<h3 style='color: red; text-align: center;'>User is Inactive</h3>";
+	          	}        		
           	} else {
            		$message =  "<h3 style='color: red; text-align: center;'>Password is Wrong</h3>";
           	}

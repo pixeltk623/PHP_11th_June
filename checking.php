@@ -1,1 +1,7 @@
-Graphic Design Training In Vadodara 
+<?php 
+		
+		echo '<a href="go.com">Test</a>';
+		
+?>
+
+<a href="go.com">Test</a>

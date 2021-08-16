@@ -29,6 +29,8 @@
 
 		$profilePic = $_FILES['profilePic'];
 
+		move_uploaded_file($profilePic['tmp_name'], "uploads/". $newFileName);
+
 
 
 		
@@ -184,21 +186,18 @@
 			<tr>
 				<th>Hobby</th>
 				<td>
-					<input type="checkbox" name="hobby[]" value="Cricket">Cricket
-					<input type="checkbox" name="hobby[]" value="Football">Football
-					<input type="checkbox" name="hobby[]" value="Tenis">Tenis
-					<input type="checkbox" name="hobby[]" value="Baseball">Baseball
+					   
 				</td>
 			</tr>
 			<tr>
 				<th>City</th>
 				<td>
 					<select name="city">
-						<option value="">select</option>
+					   	<option value="">select</option>
 						<option value="Vadodara">Vadodara</option>
-						<option value="Vadodara">Darjeeling</option>
-						<option value="Vadodara">Bhavnagar</option>
-						<option value="Vadodara">Anand</option>
+						<option value="Darjeeling">Darjeeling</option>
+						<option value="Bhavnagar">Bhavnagar</option>
+						<option value="Anand">Anand</option>
 					</select>
 				</td>
 			</tr>
