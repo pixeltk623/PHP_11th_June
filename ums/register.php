@@ -29,7 +29,7 @@
 
 		$profilePic = $_FILES['profilePic'];
 
-		move_uploaded_file($profilePic['tmp_name'], "uploads/". $newFileName);
+		//move_uploaded_file($profilePic['tmp_name'], "uploads/". $newFileName);
 
 
 
@@ -96,7 +96,7 @@
 
 				move_uploaded_file($profilePic['tmp_name'], "uploads/". $newFileName);
 				
-				$message = "<h2 style='text-align: center; color: white;'>Registration Done</h2>";
+				$message = "<h2 style='text-align: center; color: green;'>Registration Done</h2>";
 	 
 			} else {
 				$message = "<h2 style='text-align: center; color: red;'>Something Error</h2>";
@@ -186,7 +186,8 @@
 			<tr>
 				<th>Hobby</th>
 				<td>
-					   
+					<input type="checkbox" name="hobby[]" value="Cricket">Cricket
+					<input type="checkbox" name="hobby[]" value="Football">Football  
 				</td>
 			</tr>
 			<tr>
