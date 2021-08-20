@@ -6,19 +6,47 @@
         header("Location: index.php");
     }
 
-
     if (isset($_GET['uid'])) {
-    	$userId = $_GET['uid'];
+      $userId = $_GET['uid'];
 
-    	$query = "SELECT * FROM `users` WHERE id=".$userId;
-		$result = mysqli_query($conn,$query);
+      $query = "SELECT * FROM `users` WHERE id=".$userId;
+    $result = mysqli_query($conn,$query);
 
-		$dataSet = mysqli_fetch_object($result);
+    $dataSet = mysqli_fetch_object($result);
 
-		// echo "<pre>";
-
-		// print_r($dataSet);
+    $hobbyList = explode(',', $dataSet->hobby);
     }
+
+    if (isset($_POST['update'])) {
+      
+      echo "<pre>";
+      print_r($_POST);
+
+        if (preg_match('/^[a-f0-9]{32}$/', $_POST['password'])) {
+          $password = $_POST['password'];
+        } else {
+          $password = md5($_POST['password']);
+        }
+
+      //  echo $password;
+        // echo "<pre>";
+        // print_r($_FILES);
+
+        if ($_FILES['Profile_pic']['size']>0) {
+          $ext = pathinfo($_FILES['Profile_pic']['name'], PATHINFO_EXTENSION);
+          $newFileName = time().".".$ext;
+        } else {
+          
+         $newFileName = $dataSet->profile_pic;
+
+        } 
+
+        // $queryUpdate = "UPDATE `users` SET `full_name`='".$_POST['full_name']."',`username`='".$_POST['username']."',`email`='".$_POST['email']."',`password`='".md5(str)$_POST['full_name']."',`gender`='".$_POST['full_name']."',`hobby`='".$_POST['full_name']."',`city`='".$_POST['full_name']."',`dob`='".$_POST['full_name']."',`profile_pic`='$newFileName',`mobile_no`='".$_POST['full_name']."',`address`='".$_POST['full_name']."',`is_status`='".$_POST['full_name']."',`updated_at`='".$_POST['full_name']."' WHERE id = ''";
+
+
+    }
+
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -103,11 +131,12 @@
                 </div>
               </div>
               <div class="panel-body">
+                <form method="post" enctype="multipart/form-data">
         		<table class="table table-bordered">
         			<tr>
         				<th>Name</th>
         				<td>
-                  <input type="text" class="form-control" name="name" value="<?php echo $dataSet->full_name; ?>">
+                  <input type="text" class="form-control" name="full_name" value="<?php echo $dataSet->full_name; ?>">
                   </td>
         			</tr>
         			<tr>
@@ -124,44 +153,81 @@
         			</tr>
         			<tr>
         				<th>Password</th>
-        				<td style="opacity: 0.3; text-decoration: line-through;">
-                  <input type="text" class="form-control" name="name" value="<?php echo $dataSet->full_name; ?>">
-                  <?php echo $dataSet->password; ?></td>
+        				<td>
+                  <input type="text" class="form-control" name="password" value="<?php echo $dataSet->password; ?>">
+                  </td>
         			</tr>
         			<tr>
         				<th>Gender</th>
         				<td>
-                  <?php echo $dataSet->gender; ?></td>
+
+                  <input type="radio" name="gender" class="form-control-check" value="Male" <?php echo ($dataSet->gender=='Male') ? 'checked' : '' ?>> Male
+                  
+                  <input type="radio" name="gender" class="form-control-check" value="Female" <?php echo ($dataSet->gender=='Female') ? 'checked' : '' ?>> Female
+                  
+
+                </td>
         			</tr>
         			<tr>
         				<th>Hobby</th>
-        				<td><?php echo $dataSet->hobby; ?></td>
+                <td>
+        				  <input type="checkbox" name="hobby[]" value="Cricket" <?php echo in_array('Cricket', $hobbyList)? 'checked':''; ?>> Cricket
+                  <input type="checkbox" name="hobby[]" value="Football" <?php echo in_array('Football', $hobbyList)? 'checked':''; ?>> Football
+                <td>  
         			</tr>
         			<tr>
         				<th>City</th>
-        				<td><?php echo $dataSet->city; ?></td>
+        				<td>
+                    <select name="city" class="form-control">
+                      <option value="">select</option>
+                      <?php 
+
+                        $queryCity = "SELECT * FROM `city`";
+
+                        $resultCity = mysqli_query($conn, $queryCity);
+
+                        while ($responseCity = mysqli_fetch_object($resultCity)) {
+                         ?>
+                          <option value="<?php echo $responseCity->city_name; ?>" <?php echo ($dataSet->city==$responseCity->city_name) ? 'selected' : ''; ?>><?php echo $responseCity->city_name; ?></option>
+                         <?php
+                        }
+
+                      ?>
+                  </select>    
+                </td>
         			</tr>
         			<tr>
         				<th>DOB</th>
-        				<td><?php echo $dataSet->dob; ?></td>
+        				<td>
+                  <input type="date" name="dob" class="form-control" value="<?php echo $dataSet->dob; ?>">
+                  </td>
         			</tr>
         			<tr>
         				<th>Profile Pic</th>
         				<td>
         					<img src="../uploads/<?php echo $dataSet->profile_pic; ?>" width="100">
+                  <br><br>
+                  <input type="file" name="Profile_pic" class="form-control-file" name="">
         				</td>
         			</tr>
         			<tr>
         				<th>Mobile No</th>
-        				<td><?php echo $dataSet->mobile_no; ?></td>
+        				<td><input type="text" name="mobile_no" class="form-control" value="<?php echo $dataSet->mobile_no; ?>"></td>
         			</tr>
         			<tr>
         				<th>Address</th>
-        				<td><?php echo $dataSet->address; ?></td>
+        				<td>
+                  <textarea name="address" class="form-control"><?php echo $dataSet->address; ?></textarea>
+                  </td>
         			</tr>
         			<tr>
         				<th>Status</th>
-        				<td><?php echo ($dataSet->is_status==1) ? '<span style="color:green;">Active</span>' : '<span style="color: red;">Deactive</span>'; ?></td>
+        				<td>
+                  <select name="status" class="form-control">
+                    <option value="1" <?php echo ($dataSet->is_status==1) ? 'selected' : ''; ?>>Active</option>
+                    <option value="0" <?php echo ($dataSet->is_status==0) ? 'selected' : ''; ?>>Deactive</option>
+                  </select>
+               </td>
         			</tr>
         			<tr>
         				<th>Created Date</th>
@@ -171,6 +237,11 @@
         				<th>Updated Date</th>
         				<td><?php echo date("Y-m-d", strtotime($dataSet->updated_at)); ?></td>
         			</tr>
+               <tr>
+                <th colspan="2" style="text-align: center;">
+                  <input type="submit" name="update" value="Update" class="btn btn-primary">
+                </th>
+              </tr>
         			<tr>
         				<th colspan="2">
         					<a href="manage_users.php" class="btn btn-primary">Back To Home</a>
@@ -178,7 +249,10 @@
         				
         			</tr>
 
+             
+
         		</table>
+            </form>
               </div>
 
             </div>
