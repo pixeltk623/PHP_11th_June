@@ -130,6 +130,8 @@
         <ul class="nav navbar-nav navbar-right">
             <li><a href="register.php"><span class="glyphicon glyphicon-log-in"></span> <?php echo $userDetails['full_name']; ?> (My Profile) <img src="uploads/<?php echo $userDetails['profile_pic'] ?>" width="20" style="border-radius: 50%;"></a></li>
             <li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+
+            <li> <a href="change_password.php">Change Password</a> </li>
         </ul>
         <?php
         } else {

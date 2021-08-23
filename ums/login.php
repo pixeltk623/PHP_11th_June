@@ -98,6 +98,11 @@
 					<p>New User Registration <a href="register.php">Register here</a></p>
 				</th>
 			</tr>
+			<tr>
+				<th colspan="2" style="text-align: center;">
+					<p>New User Registration <a href="forgot_password.php">Forgot Password</a></p>
+				</th>
+			</tr>
 		</table>
 	</form>
 </body>
