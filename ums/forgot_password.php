@@ -42,7 +42,7 @@ if (isset($_POST['submit'])) {
     		$resultF = mysqli_query($conn,  $queryF);
 
     		if ($resultF) {
-    			echo "Email Sent";
+    			header("Location: verify_otp.php");
     		} else {
     			echo "Something Error";
     		}
