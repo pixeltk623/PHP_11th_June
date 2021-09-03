@@ -37,6 +37,37 @@ class CrudModel {
 
 	}
 
+	public function insertData($table, $data) {
+		$arrayKey = array_keys($data);
+		$colName = "`".implode("`,`", $arrayKey)."`";
+		$values = "'".implode("','", $data)."'";
+		$this->query = "INSERT INTO $table ($colName) VALUES ($values)";
+		return $this->result = mysqli_query($this->conn, $this->query);
+	}
+
+
+	public function deleteData($table, $data) {
+
+		$this->query = "DELETE FROM $table WHERE id=".$data;
+		return $this->result = mysqli_query($this->conn, $this->query);
+
+	}
+
+	public function editData($table, $data) {
+
+		$this->query = "SELECT * FROM $table WHERE id=".$data;
+		$this->result = mysqli_query($this->conn, $this->query);
+		return $this->result = mysqli_fetch_object($this->result);
+
+	}
+
+	public function updateData($table, $data) {
+
+		$this->query = "UPDATE $table SET `class`='".$data['class']."',`name`='".$data['course']."' WHERE id=".$data['cid'];
+		return $this->result = mysqli_query($this->conn, $this->query);
+
+	}
+
 }
 
 ?>

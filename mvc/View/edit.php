@@ -1,3 +1,11 @@
+<?php 
+
+// echo "<pre>";
+
+// print_r($result);
+	
+	
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,17 +24,16 @@
 				<?php
 			}
 		?>
-		<form method="post">
+		<form method="post" action="update">
 			<label>Class</label>
-			<input type="text" name="class">
+			<input type="text" name="class" value="<?php echo $result->class; ?>">
 			<br><br>
 			<label>Course</label>
-			<input type="text" name="course">
+			<input type="text" name="course" value="<?php echo $result->name; ?>">
 			<br><br>
+			<input type="hidden" name="cid" value="<?php echo $result->id; ?>">
 			<input type="submit" name="submit">
 		</form>
-		<br><br>
-		<a href="http://localhost/PHP_11th_June/mvc/" class="btn btn-warning">Back To Home</a>
 	</div>
 	
 
