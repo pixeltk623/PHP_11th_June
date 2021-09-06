@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='js/jquery.js'></script>
+    <script type="text/javascript">
+       
+        $(document).ready(function(){
+
+            $("#btn").click(function(){
+
+
+                $("h1,h2,p,b").addClass("para");
+                
+                $("div").addClass("para1");
+
+
+            });
+
+        });
+
+
+    </script>
+ 
+ 
+    <style>
+     .para
+     {
+       color:red;
+       font-size: 20px;
+       text-shadow: 1px 0px black;
+
+
+     }
+
+     .para1
+
+     {
+
+      width: 250px;
+      height: 250px;
+     
+      transition: 1s ease all;
+
+     background-color: brown;
+     color: white;
+     padding: 15px;
+     }
+ 
+    </style>
+</head>
+<body>
+
+    <h1>Hello kiran Vibhakar</h1>
+    <h2>Hello kiran Vibhakar</h2>
+    <p>Hello i Prateek</p>
+    <b>Hello i am Meet</b><br>
+    <div>Hello meet How are you</div> 
+    <button type="button" id="btn">Add class</button>
+    
+</body>
+</html>

@@ -1,0 +1,24 @@
+body
+{
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+     background-color: aquamarine;
+}
+.thumbnail
+{
+    background-color:white;
+}
+.thumbnail:hover
+
+{
+    background-color: antiquewhite;
+}
+
+#sidebar ul li
+{
+    font-size:17px;
+    padding: 2px 5px;
+    text-decoration: none;
+    list-style-type: none;
+}

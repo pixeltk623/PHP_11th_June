@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='js/jquery.js'></script>
+    <script src="js/cycle.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $("#slide").cycle("shuffle,turnLeft,turnRight,fade");
+
+
+      })
+    </script>
+    
+    <style type="text/css">
+     
+        #slide img
+        {
+            width: 100%;
+            height: 400px;
+        }
+
+    </style>
+</head>
+<body>
+
+
+    <div id="slide">
+     
+     <img src="images/banner.jpg">
+     <img src="images/banner1.jpg">
+     <img src="images/banner2.jpg">
+     <img src="images/banner3.jpg">
+
+    </div>
+    
+</body>
+</html>
