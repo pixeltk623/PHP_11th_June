@@ -7,16 +7,58 @@ namespace Composer\Autoload;
 class ComposerStaticInit1535ae8dad98a524efbe087561b0d374
 {
     public static $prefixLengthsPsr4 = array (
+        'S' => 
+        array (
+            'Stripe\\' => 7,
+        ),
         'P' => 
         array (
             'PHPMailer\\PHPMailer\\' => 20,
         ),
+        'E' => 
+        array (
+            'Endroid\\QrCode\\' => 15,
+        ),
+        'D' => 
+        array (
+            'DASPRiD\\Enum\\' => 13,
+        ),
+        'B' => 
+        array (
+            'BaconQrCode\\' => 12,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'Stripe\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/stripe/stripe-php/lib',
+        ),
         'PHPMailer\\PHPMailer\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
+        ),
+        'Endroid\\QrCode\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/endroid/qr-code/src',
+        ),
+        'DASPRiD\\Enum\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/dasprid/enum/src',
+        ),
+        'BaconQrCode\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/bacon/bacon-qr-code/src',
+        ),
+    );
+
+    public static $prefixesPsr0 = array (
+        'P' => 
+        array (
+            'PHPQRCode' => 
+            array (
+                0 => __DIR__ . '/..' . '/aferrandini/phpqrcode/lib',
+            ),
         ),
     );
 
@@ -29,6 +71,7 @@ class ComposerStaticInit1535ae8dad98a524efbe087561b0d374
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit1535ae8dad98a524efbe087561b0d374::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit1535ae8dad98a524efbe087561b0d374::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit1535ae8dad98a524efbe087561b0d374::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit1535ae8dad98a524efbe087561b0d374::$classMap;
 
         }, null, ClassLoader::class);
