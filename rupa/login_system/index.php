@@ -1,34 +1,31 @@
-<?php 
- include_once'config.php';
+<?php       
+include_once 'config.php';
+    if (isset($_POST['submit'])) {
+        
+      $username = $_POST['username'];
+      $password = md5($_POST['password']);
 
- if (isset($_POST['submit'])) { 
+      $query = "SELECT * FROM users WHERE username = '$username'";
+      
+      $result = mysqli_query($conn, $query);
 
-    $username = $_POST['username'];
-    $password =md5($_POST['password']);
+      if ($result->num_rows>0) {
+          
+          $queryCp = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
+          $resultCp = mysqli_query($conn, $queryCp);
 
-    $query = "SELECT * FROM user WHERE username ='$username' ";
+          if($resultCp->num_rows>0) {
+            header("Location: dashboard.php");
+          } else {
+            
+            $message =  "<h5 style='color: red; text-align: center;'>Password is Wrong</h5>";
+          }
 
-    $result = mysqli_query($conn,$query);
+        } else {
+            $message =  "<h5 style='color: red; text-align: center;'>Username is InValid</h5>";
+        }
 
-    if ($result->num_row>0) {
-
-       $queryCP = "SELECT * FROM user WHERE username ='$username' AND password ='$password' ";
-
-       $resultCP = mysqli_query($conn,$queryCP);
-
-    if ($resultCP->num_row>0) {
-       
-       header("location:dashboard.php");
-
-    }else{
-
-         $message = "<h5 style='color:red; text-align:center;'>PASSWORD IS INVALID </h5>";
     }
-
-    }else{
-
-        $message = "<h5 style='color:red; text-align:center;'>USERNAME IS INVALID </h5>";
-    }   
 ?>
 <style type="text/css">
   body {
@@ -92,3 +89,4 @@
         </div>
     </div>
 </body>
+</html>
