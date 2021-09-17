@@ -4,75 +4,57 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit1535ae8dad98a524efbe087561b0d374
+class ComposerStaticInit31ecb14e513dc95a275eccc73ccf06b0
 {
+    public static $files = array (
+        'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
+        '3a37ebac017bc098e9a86b35401e7a68' => __DIR__ . '/..' . '/mongodb/mongodb/src/functions.php',
+    );
+
     public static $prefixLengthsPsr4 = array (
         'S' => 
         array (
-            'Stripe\\' => 7,
+            'Symfony\\Polyfill\\Php80\\' => 23,
         ),
-        'P' => 
+        'M' => 
         array (
-            'PHPMailer\\PHPMailer\\' => 20,
+            'MongoDB\\' => 8,
         ),
-        'E' => 
+        'J' => 
         array (
-            'Endroid\\QrCode\\' => 15,
-        ),
-        'D' => 
-        array (
-            'DASPRiD\\Enum\\' => 13,
-        ),
-        'B' => 
-        array (
-            'BaconQrCode\\' => 12,
+            'Jean85\\' => 7,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Stripe\\' => 
+        'Symfony\\Polyfill\\Php80\\' => 
         array (
-            0 => __DIR__ . '/..' . '/stripe/stripe-php/lib',
+            0 => __DIR__ . '/..' . '/symfony/polyfill-php80',
         ),
-        'PHPMailer\\PHPMailer\\' => 
+        'MongoDB\\' => 
         array (
-            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
+            0 => __DIR__ . '/..' . '/mongodb/mongodb/src',
         ),
-        'Endroid\\QrCode\\' => 
+        'Jean85\\' => 
         array (
-            0 => __DIR__ . '/..' . '/endroid/qr-code/src',
-        ),
-        'DASPRiD\\Enum\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/dasprid/enum/src',
-        ),
-        'BaconQrCode\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/bacon/bacon-qr-code/src',
-        ),
-    );
-
-    public static $prefixesPsr0 = array (
-        'P' => 
-        array (
-            'PHPQRCode' => 
-            array (
-                0 => __DIR__ . '/..' . '/aferrandini/phpqrcode/lib',
-            ),
+            0 => __DIR__ . '/..' . '/jean85/pretty-package-versions/src',
         ),
     );
 
     public static $classMap = array (
+        'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
+        'UnhandledMatchError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
+        'ValueError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit1535ae8dad98a524efbe087561b0d374::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit1535ae8dad98a524efbe087561b0d374::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit1535ae8dad98a524efbe087561b0d374::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit1535ae8dad98a524efbe087561b0d374::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit31ecb14e513dc95a275eccc73ccf06b0::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit31ecb14e513dc95a275eccc73ccf06b0::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit31ecb14e513dc95a275eccc73ccf06b0::$classMap;
 
         }, null, ClassLoader::class);
     }

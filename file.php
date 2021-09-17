@@ -1,11 +1,15 @@
 <?php 
 	
-	// $fileName = "test.txt";
-	// if (file_exists("uploads/".$fileName)) {
-	// 	echo "Hai";
-	// 	unlink("uploads/".$fileName);
-	// } else {
-	// 	echo "Nahi Hai";
-	// }
+require_once __DIR__ . '/vendor/autoload.php';
+
+
+$collection = (new MongoDB\Client)->test->users;
+
+
+
+
+
+
+
 
 ?>
