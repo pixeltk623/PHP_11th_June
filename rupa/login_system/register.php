@@ -21,7 +21,7 @@
        }
 
 
-        $queryCheckUserName="SELECT * FROM user WHERE username='$username'";
+        $queryCheckUserName="SELECT * FROM users WHERE username='$username'";
 
         $resultU = mysqli_query($conn, $queryCheckUserName);
 
