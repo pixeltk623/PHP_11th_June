@@ -47,6 +47,14 @@ class CrudModel {
 		return $this->result = mysqli_query($this->conn, $this->query);
 	}
 
+	public function allCourse($table) {
+
+		$this->query = "SELECT * FROM $table";
+		$this->result = mysqli_query($this->conn, $this->query);
+		while ($this->response[] = mysqli_fetch_object($this->result)) {}
+		return array_filter($this->response);
+	}
+
 }
 
 ?>

@@ -12,6 +12,13 @@
 					case '/add_course':
 						include_once 'View/add_course.php';
 						break;
+
+					case '/allCourse':
+						$result = $this->allCourse('courses');
+
+
+						echo json_encode($result);
+						break;
 					
 					default:
 						# code...
