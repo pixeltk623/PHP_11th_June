@@ -24,8 +24,18 @@
    }else{
       $hobby = "";
    }
+   $profilepic = $_FILES['profilepic'];
   
    $dob = $_POST['dob'];
+
+   if (file_exists( "uploads/". $profilepic['name'] )) {
+    	echo "Present";
+   }else{
+     echo "Not Present";
+   }
+
+
+   die;
 
    //$profilepic = $_FILES['profilepic'];
 
