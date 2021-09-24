@@ -1,4 +1,4 @@
-<?php 
+   <?php 
 	include_once 'database/database.php';
 	if (isset($_POST['submit'])) {
 		
@@ -39,7 +39,7 @@
 
 		$ext = pathinfo($profilePic['name'], PATHINFO_EXTENSION);
 
-		$newFileName = time().".".$ext;
+		$newFileName = time().".".$ext; 
 
 
 		$queryCheckEmail = "SELECT * FROM users WHERE email = '$email'";
