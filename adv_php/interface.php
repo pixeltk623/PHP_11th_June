@@ -1,12 +1,13 @@
 
-Core PHP 
+<!-- Core PHP 
 	array
 	loops
 
 	simple crud 
 		4 - 5
 	search 
-		=> 
+		=> Daily 
+			1 =>  04 oct 
 
 
 	oops 
@@ -14,7 +15,9 @@ Core PHP
 		MVC 
 			4 - 5
 	Crud -Ajax
-			4 - 5
+			4 - 5 -->
+
+
 
 <!-- 1. Square
 2. triangle
