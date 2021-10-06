@@ -21,7 +21,7 @@
 </head>
 <body class="template-index home8-jewellery belle">
 <div id="pre-loader">
-    <img src="<?php echo base_url('assets/assets_front/images/loader.gif') ?>" alt="Loading..." />
+    <!-- <img src="<?php echo base_url('assets/assets_front/images/loader.gif') ?>" alt="Loading..." /> -->
 </div>
 <div class="pageWrapper">
 	<!--Search Form Drawer-->
@@ -96,7 +96,7 @@
                 <!--Desktop Logo-->
                 <div class="logo col-5 col-sm-6 col-md-6 col-lg-8 text-center">
                     <a href="index.html">
-                        <img src="<?php echo base_url('assets/assets_front/images/logo-text.svg') ?>" alt="Belle Multipurpose Html Template" title="Belle Multipurpose Html Template" />
+                        <img  src="<?php echo base_url('assets/assets_front/images/logo-text.svg') ?>" alt="Belle Multipurpose Html Template" title="Belle Multipurpose Html Template" />
                     </a>
                 </div>
                 <!--End Desktop Logo-->
@@ -111,7 +111,7 @@
                         	<ul class="mini-products-list">
                                 <li class="item">
                                 	<a class="product-image" href="#">
-                                    	<img src="<?php echo base_url('assets/assets_front/images/product-images/cape-dress-1.jpg') ?>" alt="3/4 Sleeve Kimono Dress" title="" />
+                                    	<img  src="<?php echo base_url('assets/assets_front/images/product-images/cape-dress-1.jpg') ?>" alt="3/4 Sleeve Kimono Dress" title="" />
                                     </a>
                                     <div class="product-details">
                                     	<a href="#" class="remove"><i class="anm anm-times-l" aria-hidden="true"></i></a>
@@ -266,7 +266,7 @@
                             </ul>
                         </li>
                         <li class="grid__item lvl-1 col-md-6 col-lg-6">
-                            <a href="#"><img src="<?php echo base_url('assets/assets_front/images/logo-text.svg') ?>assets/images/megamenu-bg1.jpg" alt="" title="" /></a>
+                            <a href="#"><img src="<?php echo base_url('assets/assets_front/images/l/megamenu-bg1.jpg') ?>" alt="" title="" /></a>
                         </li>
                     </ul>
                 </div>
@@ -318,7 +318,7 @@
                                 </li>
                         </ul>
                     </li>
-                    <li class="grid__item large-up--one-whole imageCol"><a href="#"><img src="<?php echo base_url('assets/assets_front/images/logo-text.svg') ?>assets/images/megamenu-bg2.jpg" alt=""></a></li>
+                    <li class="grid__item large-up--one-whole imageCol"><a href="#"><img src="<?php echo base_url('assets/assets_front/images/megamenu-bg2.jpg') ?>" alt=""></a></li>
                 </ul>
             </div>
         </li>
@@ -541,7 +541,7 @@
         	<div class="home-slideshow">
             	<div class="slide">
                 	<div class="blur-up lazyload">
-                        <img class="blur-up lazyload" data-src="<?php echo base_url('assets/assets_front/images/logo-text.svg') ?>assets/images/slideshow-banners/home8-jewelry-banner1.jpg" src="assets/images/slideshow-banners/home8-jewelry-banner1.jpg" alt="Wedding bands" title="Wedding bands" />
+                        <img class="blur-up lazyload" data-src="<?php echo base_url('assets/assets_front/images/slideshow-banners/home8-jewelry-banner1.jpg') ?>" src="<?php echo base_url('assets/assets_front/images/slideshow-banners/home8-jewelry-banner1.jpg') ?>" />
                         <div class="slideshow__text-wrap slideshow__overlay classic middle">
                             <div class="slideshow__text-content middle">
                             	<div class="container">
@@ -557,7 +557,7 @@
                 </div>
                 <div class="slide">
                 	<div class="blur-up lazyload">
-                        <img class="blur-up lazyload" data-src="<?php echo base_url('assets/assets_front/images/logo-text.svg') ?>assets/images/slideshow-banners/home8-jewelry-banner2.jpg" src="<?php echo base_url('assets/assets_front/images/logo-text.svg') ?>assets/images/slideshow-banners/home8-jewelry-banner2.jpg" alt="Shop New Collection" title="Shop New Collection" />
+                        <img class="blur-up lazyload" data-src="<?php echo base_url('assets/assets_front/images/slideshow-banners/home8-jewelry-banner2.jpg') ?>" src="<?php echo base_url('assets/assets_front/images//slideshow-banners/home8-jewelry-banner2.jpg') ?>" alt="Shop New Collection" title="Shop New Collection" />
                         <div class="slideshow__text-wrap slideshow__overlay classic middle">
                             <div class="slideshow__text-content middle">
                             	<div class="container">
@@ -591,7 +591,7 @@
                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 pl-0">
                             <div class="inner btmleft">
                                 <a href="#">
-                                    <img data-src="<?php echo base_url('assets/assets_front/images/logo-text.svg') ?>assets/images/collection/jewellery-collection1.jpg" src="<?php echo base_url('assets/assets_front/images/logo-text.svg') ?>assets/images/collection/jewellery-collection1.jpg" alt="" class="blur-up lazyload"/>
+                                    <img data-src="<?php echo base_url('assets/assets_front/images/collection/jewellery-collection1.jpg') ?>" src="<?php echo base_url('assets/assets_front/images/collection/jewellery-collection1.jpg') ?>" alt="" class="blur-up lazyload"/>
                                     <span class="ttl">LAYERS OF DELICATE DESIRE</span>
                                 </a>
                             </div>    	
@@ -599,13 +599,13 @@
                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 pr-0">
                             <div class="inner center">
                                 <a href="#">
-                                    <img data-src="<?php echo base_url('assets/assets_front/images/logo-text.svg') ?>assets/images/collection/jewellery-collection2.jpg" src="<?php echo base_url('assets/assets_front/images/logo-text.svg') ?>assets/images/collection/jewellery-collection2.jpg" alt="" class="blur-up lazyload"/>
+                                    <img data-src="<?php echo base_url('assets/assets_front/images/collection/jewellery-collection3.jpg') ?>"" src="<?php echo base_url('assets/assets_front/images/collection/jewellery-collection3.jpg') ?>" alt="" class="blur-up lazyload"/>
                                     <span class="ttl">GIFT FOR HER</span>
                                 </a>
                             </div>  
                             <div class="inner btmright mt-4">
                                 <a href="#">
-                                    <img data-src="<?php echo base_url('assets/assets_front/images/logo-text.svg') ?>assets/images/collection/jewellery-collection3.jpg" src="<?php echo base_url('assets/assets_front/images/logo-text.svg') ?>assets/images/collection/jewellery-collection3.jpg" alt="" class="blur-up lazyload"/>
+                                    <img data-src="<?php echo base_url('assets/assets_front/images/collection/jewellery-collection3.jpg') ?>" src="<?php echo base_url('assets/assets_front/images/collection/jewellery-collection3.jpg') ?>" alt="" class="blur-up lazyload"/>
                                     <span class="ttl">FOR YOUR LOVED ONE</span>
                                 </a>
                             </div>  
@@ -634,10 +634,10 @@
                             <!-- start product image -->
                             <a href="product-layout-1.html" class="grid-view-item__link">
                                 <!-- image -->
-                                <img class="primary blur-up lazyload" data-src="<?php echo base_url('assets/assets_front/images/jewellery-products/jewellery-products1.jpg') ?>" src="<?php echo base_url('assets/assets_front/images/jewellery-products/jewellery-products1.jpg') ?>" alt="image" title="product">
+                                <img class="primary blur-up lazyload" data-src="<?php echo base_url('assets/assets_front/images/jewellery-products/jewellery-products1-1.jpg') ?>" src="<?php echo base_url('assets/assets_front/images/jewellery-products/jewellery-products1-1.jpg') ?>" alt="image" title="product">
                                 <!-- End image -->
                                 <!-- Hover image -->
-                                <img class="hover blur-up lazyload" data-src="<?php echo base_url('assets/assets_front/images/logo-text.svg') ?>assets/images/jewellery-products/jewellery-products1-1.jpg" src="<?php echo base_url('assets/assets_front/images/logo-text.svg') ?>assets/images/jewellery-products/jewellery-products1-1.jpg" alt="image" title="product">
+                                <img class="hover blur-up lazyload" data-src="<?php echo base_url('assets/assets_front/images/jewellery-products/jewellery-products1-1.jpg') ?>" src="<?php echo base_url('assets/assets_front/images/jewellery-products/jewellery-products1-1.jpg') ?>" alt="image" title="product">
                                 <!-- End hover image -->
                             </a>
                             <!-- end product image -->
@@ -684,10 +684,10 @@
                             <!-- start product image -->
                             <a href="product-layout-1.html" class="grid-view-item__link">
                                 <!-- image -->
-                                <img class="primary blur-up lazyload" data-src="<?php echo base_url('assets/assets_front/images/logo-text.svg') ?>assets/images/jewellery-products/jewellery-products2.jpg" src="<?php echo base_url('assets/assets_front/images/logo-text.svg') ?>assets/images/jewellery-products/jewellery-products2.jpg" alt="image" title="product">
+                                <img class="primary blur-up lazyload" data-src="<?php echo base_url('assets/assets_front/images/jewellery-products/jewellery-products2.jpg') ?>" src="<?php echo base_url('assets/assets_front/images/jewellery-products/jewellery-products2.jpg') ?>" alt="image" title="product">
                                 <!-- End image -->
                                 <!-- Hover image -->
-                                <img class="hover blur-up lazyload" data-src="<?php echo base_url('assets/assets_front/images/logo-text.svg') ?>assets/images/jewellery-products/jewellery-products2-1.jpg" src="<?php echo base_url('assets/assets_front/images/logo-text.svg') ?>assets/images/jewellery-products/jewellery-products2-1.jpg" alt="image" title="product">
+                                <img class="hover blur-up lazyload" data-src="<?php echo base_url('assets/assets_front/images/jewellery-products/jewellery-products2.jpg') ?>" src="<?php echo base_url('assets/assets_front/images/jewellery-products/jewellery-products2.jpg') ?>" alt="image" title="product">
                                 <!-- End hover image -->
                             </a>
                             <!-- end product image -->
@@ -736,10 +736,10 @@
                             <!-- start product image -->
                            <a href="product-layout-1.html" class="grid-view-item__link">
                                 <!-- image -->
-                                <img class="primary blur-up lazyload" data-src="<?php echo base_url('assets/assets_front/images/logo-text.svg') ?>assets/images/jewellery-products/jewellery-products3.jpg" src="<?php echo base_url('assets/assets_front/images/logo-text.svg') ?>assets/images/jewellery-products/jewellery-products3.jpg" alt="image" title="product">
+                                <img class="primary blur-up lazyload" data-src="<?php echo base_url('assets/assets_front/images/jewellery-products/jewellery-products3.jpg') ?>" src="<?php echo base_url('assets/assets_front/images/jewellery-products/jewellery-products3.jpg') ?>" alt="image" title="product">
                                 <!-- End image -->
                                 <!-- Hover image -->
-                                <img class="hover blur-up lazyload" data-src="<?php echo base_url('assets/assets_front/images/logo-text.svg') ?>assets/images/jewellery-products/jewellery-products3-1.jpg" src="assets/images/jewellery-products/jewellery-products3-1.jpg" alt="image" title="product">
+                                <img class="hover blur-up lazyload" data-src="<?php echo base_url('assets/assets_front/images/jewellery-products/jewellery-products3-1.jpg') ?>" src="<?php echo base_url('assets/assets_front/images/jewellery-products/jewellery-products3-1.jpg') ?>" alt="image" title="product">
                                 <!-- End hover image -->
                             </a>
                             <!-- end product image -->
@@ -788,10 +788,10 @@
                             <!-- start product image -->
                             <a href="product-layout-1.html" class="grid-view-item__link">
                                 <!-- image -->
-                                <img class="primary blur-up lazyload" data-src="<?php echo base_url('assets/assets_front/images/logo-text.svg') ?>assets/images/jewellery-products/jewellery-products4.jpg" src="<?php echo base_url('assets/assets_front/images/logo-text.svg') ?>assets/images/jewellery-products/jewellery-products4.jpg" alt="image" title="product" />
+                                <img class="primary blur-up lazyload" data-src="<?php echo base_url('assets/assets_front/images/jewellery-products/jewellery-products4.jpg') ?>" src="<?php echo base_url('assets/assets_front/images/jewellery-products/jewellery-products4.jpg') ?>" alt="image" title="product" />
                                 <!-- End image -->
                                 <!-- Hover image -->
-                                <img class="hover blur-up lazyload" data-src="<?php echo base_url('assets/assets_front/images/logo-text.svg') ?>assets/images/jewellery-products/jewellery-products4-1.jpg" src="<?php echo base_url('assets/assets_front/images/logo-text.svg') ?>assets/images/jewellery-products/jewellery-products4-1.jpg" alt="image" title="product" />
+                                <img class="hover blur-up lazyload" data-src="<?php echo base_url('assets/assets_front/images/jewellery-products/jewellery-products4.jpg') ?>" src="<?php echo base_url('assets/assets_front/images/jewellery-products/jewellery-products4.jpg') ?>g" alt="image" title="product" />
                                 <!-- End hover image -->
                             </a>
                             <!-- end product image -->
@@ -841,10 +841,10 @@
                             <!-- start product image -->
                             <a href="product-layout-1.html" class="grid-view-item__link">
                                 <!-- image -->
-                                <img class="primary blur-up lazyload" data-src="assets/images/jewellery-products/jewellery-products5.jpg" src="assets/images/jewellery-products/jewellery-products5.jpg" alt="image" title="product" />
+                                <img class="primary blur-up lazyload" data-src="<?php echo base_url('assets/assets_front/images/jewellery-products/jewellery-products5.jpg') ?>" src="<?php echo base_url('assets/assets_front/images/jewellery-products/jewellery-products5.jpg') ?>" alt="image" title="product" />
                                 <!-- End image -->
                                 <!-- Hover image -->
-                                <img class="hover blur-up lazyload" data-src="assets/images/jewellery-products/jewellery-products5-1.jpg" src="assets/images/jewellery-products/jewellery-products5-1.jpg" alt="image" title="product" />
+                                <img class="hover blur-up lazyload" data-src="<?php echo base_url('assets/assets_front/images/jewellery-products/jewellery-products5-1.jpg') ?>" src="<?php echo base_url('assets/assets_front/images/jewellery-products/jewellery-products5-1.jpg') ?>" alt="image" title="product" />
                                 <!-- End hover image -->
                             </a>
                             <!-- end product image -->
@@ -893,10 +893,10 @@
                             <!-- start product image -->
                             <a href="product-layout-1.html" class="grid-view-item__link">
                                 <!-- image -->
-                                <img class="primary blur-up lazyload" data-src="assets/images/jewellery-products/jewellery-products6.jpg" src="assets/images/jewellery-products/jewellery-products6.jpg" alt="image" title="product" />
+                                <img class="primary blur-up lazyload" data-src="<?php echo base_url('assets/assets_front/images/jewellery-products/jewellery-products4.jpg') ?>" src="<?php echo base_url('assets/assets_front/images/jewellery-products/jewellery-products4.jpg') ?>" alt="image" title="product" />
                                 <!-- End image -->
                                 <!-- Hover image -->
-                                <img class="hover blur-up lazyload" data-src="assets/images/jewellery-products/jewellery-products6-1.jpg" src="assets/images/jewellery-products/jewellery-products6-1.jpg" alt="image" title="product" />
+                                <img class="hover blur-up lazyload" data-src="<?php echo base_url('assets/assets_front/images/jewellery-products/jewellery-products4.jpg') ?>" src="<?php echo base_url('assets/assets_front/images/jewellery-products/jewellery-products4.jpg') ?>" alt="image" title="product" />
                                 <!-- End hover image -->
                             </a>
                             <!-- end product image -->
@@ -960,21 +960,23 @@
                     <div class="col-6 col-sm-6 col-md-4 col-lg-4">
                         <div class="collection-grid-item">
                             <a href="collection-page.html" class="collection-grid-item__link">
-                                <img data-src="assets/images/collection/jewellery-collection4.jpg" src="assets/images/collection/jewellery-collection4.jpg" alt="Hot" class="blur-up lazyload"/>
+                            
+                                <img data-src="<?php echo base_url('assets/assets_front/images/collection/jewellery-collection4.jpg') ?>" alt="Hot" class="blur-up lazyload"/>
                             </a>
                         </div>
                     </div>
                     <div class="col-6 col-sm-6 col-md-4 col-lg-4">
                         <div class="collection-grid-item">
                             <a href="collection-page.html" class="collection-grid-item__link">
-                                <img data-src="assets/images/collection/jewellery-collection5.jpg" src="assets/images/collection/jewellery-collection5.jpg" alt="Denim" class="blur-up lazyload"/>
+                           
+                                <img data-src=" <?php echo base_url('assets/assets_front/images/collection/jewellery-collection5.jpg') ?>" src=" <?php echo base_url('assets/assets_front/images/collection/jewellery-collection5.jpg') ?>" alt="Denim" class="blur-up lazyload"/>
                             </a>
                         </div>
                     </div>
                     <div class="col-6 col-sm-6 col-md-4 col-lg-4">
                         <div class="collection-grid-item">
                             <a href="collection-page.html" class="collection-grid-item__link">
-                                <img data-src="assets/images/collection/jewellery-collection6.jpg" src="assets/images/collection/jewellery-collection6.jpg" alt="Summer" class="blur-up lazyload"/>
+                                <img data-src=" <?php echo base_url('assets/assets_front/images/collection/jewellery-collection6.jpg') ?>" src=" <?php echo base_url('assets/assets_front/images/collection/jewellery-collection6.jpg') ?>" alt="Summer" class="blur-up lazyload"/>
                             </a>
                         </div>
                     </div>
@@ -1018,7 +1020,8 @@
         
         <!--Hero Banner With Text-->
         <div class="section hero hero--medium hero__overlay bg-size">
-        	<img class="bg-img" src="assets/images/parallax-banners/jewellery-parallax.jpg" alt="" />
+       
+        	<img class="bg-img" src=" <?php echo base_url('assets/assets_front/images/parallax-banners/jewellery-parallax.jpg') ?>" alt="" />
         	<div class="hero__inner">
             	<div class="container">
                 	<div class="wrap-text right text-medium font-bold">
@@ -1144,7 +1147,8 @@
                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                         <div class="product-details-img">
                             <div class="pl-20">
-                                <img src="assets/images/product-detail-page/camelia-reversible-big1.jpg" alt="" />
+                            
+                                <img src="<?php echo base_url('assets/assets_front/images/product-detail-page/camelia-reversible-big1.jpg') ?>" alt="" />
                             </div>
                         </div>
                     </div>
@@ -1253,7 +1257,7 @@
         <a class="btn closepopup"><i class="icon icon anm anm-times-l"></i></a>
         <!-- Modal content-->
         <div class="display-table splash-bg">
-          <div class="display-table-cell width40"><img src="<?php echo base_url('assets/assets_front/images/logo-text.svg') ?>assets/images/newsletter-img.jpg" alt="Join Our Mailing List" title="Join Our Mailing List" /> </div>
+          <div class="display-table-cell width40"><img src="<?php echo base_url('assets/assets_front/images/newsletter-img.jpg') ?>" alt="Join Our Mailing List" title="Join Our Mailing List" /> </div>
           <div class="display-table-cell width60 text-center">
             <div class="newsletter-left">
               <h2>Join Our Mailing List</h2>

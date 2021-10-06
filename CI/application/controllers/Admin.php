@@ -9,6 +9,8 @@
 
 		public function index() {
 			
+			// echo $_SERVER['REQUEST_URI'];
+			// die;
 			return $this->load->view('admin/login');
 		}
 
