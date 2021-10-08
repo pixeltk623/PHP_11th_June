@@ -1,9 +1,15 @@
 <?php 
     
+   // echo "<pre>";
+
+    // print_r(count($data));
+
+    $toatalNumberOfPages = 3;
+    
+
     // echo "<pre>";
 
-    // print_r($data);
-    
+    // print_r($this->session);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +26,20 @@
 
 <div class="container">
   <h2 class="text-center text-primary">Crud In CI</h2>
-  <a href="<?php echo base_url('Crud/add_employee'); ?>" class="btn btn-primary mb-2">Add New Employee</a>    
+  <a href="<?php echo base_url('Crud/add_employee'); ?>" class="btn btn-primary mb-2">Add New Employee</a>   
+
+  <?php 
+
+    if ($this->session->flashdata('message')) {
+      ?>
+      <div class="alert <?php echo $this->session->flashdata('className'); ?>">
+        <?php echo $this->session->flashdata('message'); ?>
+      </div>
+      <?php
+    }
+
+  ?>
+
   <table class="table table-bordered">
     <thead>
       <tr>
@@ -42,8 +61,8 @@
           <td><?php echo date("Y-m-d", strtotime($value->created_at)); ?></td>
           <td>
             <a href="" class="btn btn-secondary">Show</a>
-            <a href="" class="btn btn-warning">Edit</a>
-            <a href="" class="btn btn-danger">Delete</a>
+            <a href="<?php echo base_url('crud/edit')."/".$value->id ?>" class="btn btn-warning">Edit</a>
+            <a href="<?php echo base_url('crud/delete')."/".$value->id ?>" class="btn btn-danger">Delete</a>
           </td>
       </tr>
           <?php
@@ -53,6 +72,21 @@
      
     </tbody>
   </table>
+
+  <ul class="pagination justify-content-end">
+    <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+
+    <?php 
+
+      for ($i=1; $i <= $toatalNumberOfPages; $i++) { 
+        ?>
+        <li class="page-item"><a class="page-link" href="<?php echo base_url('crud/pagination')."/".$i; ?>"><?php echo  $i; ?></a></li>
+        <?php
+      }
+
+    ?>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
 </div>
 
 </body>
