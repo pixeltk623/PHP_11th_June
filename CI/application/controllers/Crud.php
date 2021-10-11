@@ -92,9 +92,69 @@
 
 		public function store() {
 
+
+
+			$ext = pathinfo($_FILES["profilePic"]['name'], PATHINFO_EXTENSION);
+
+
+			$new_name = time().".".$ext;
+
+
+			$config['upload_path']          = './uploads/';
+            $config['allowed_types']        = 'gif|jpg|png|jpeg';
+           // $config['encrypt_name'] = TRUE;
+
+            // $config['max_size']             = 1000;
+            // $config['max_width']            = 1024;
+            // $config['max_height']           = 768;
+
+
+            
+			$config['file_name'] = $new_name;
+
+
+            $this->load->library('upload', $config);
+
+            //echo $this->upload->do_upload('profilePic');
+
+            $this->upload->do_upload('profilePic');
+
+
+            $data = $this->upload->data();
+
+            echo "<pre>";
+
+            print_r($data);
+
+            die;
+
+            if (!$this->upload->do_upload('profilePic')) {
+                
+                $error = array('error' => $this->upload->display_errors());
+                //echo "string";
+                
+            } else {
+            	$dataFile = array('upload_data' => $this->upload->data());
+
+            	// echo "<pre>";
+
+            	// print_r($data['upload_data']['file_name']);
+            }
+
+            // die;
+
+
+   //          die;
+
+			// echo "<pre>";
+
+			// print_r($config);
+			// die;
+
 			$data = array(
       			"name" => $this->input->post("name"),
-      			"email" => $this->input->post("email")
+      			"email" => $this->input->post("email"),
+      			"profilePic" => $dataFile['upload_data']['file_name']
       		);
 			$data = $this->CrudModel->InsertData($data);
 

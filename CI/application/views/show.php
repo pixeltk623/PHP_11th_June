@@ -47,6 +47,7 @@
         <th>Name</th>
         <th>Email</th>
         <th>Date</th>
+        <th>Profile Pic</th>
         <th>Action</th>
       </tr>
     </thead>
@@ -59,6 +60,9 @@
           <td><?php echo $value->name; ?></td>
           <td><?php echo $value->email; ?></td>
           <td><?php echo date("Y-m-d", strtotime($value->created_at)); ?></td>
+          <td>
+              <img src="<?php echo base_url('uploads/'.$value->profilePic.''); ?>" width="100" alt="Image">
+          </td>
           <td>
             <a href="" class="btn btn-secondary">Show</a>
             <a href="<?php echo base_url('crud/edit')."/".$value->id ?>" class="btn btn-warning">Edit</a>
